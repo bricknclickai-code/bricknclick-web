@@ -83,7 +83,6 @@ const orgJsonLd = {
   slogan: "We Own It",
   description:
     "A digital agency founded and led by IIM alumni — performance ads, websites engineered for SEO, and content systems that compound.",
-  foundingDate: "2024",
   founder: [
     {
       "@type": "Person",

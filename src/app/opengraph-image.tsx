@@ -23,7 +23,7 @@ export default function OpenGraphImage() {
       >
         <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 22, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.12em" }}>
           <div style={{ width: 10, height: 10, background: "#ff6b1a", borderRadius: 999 }} />
-          A digital agency · Est. 2024
+          A digital agency that ships
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>

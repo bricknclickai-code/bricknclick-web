@@ -38,9 +38,9 @@ const values = [
 
 const numbers = [
   { v: "₹65L+", l: "Client commissions · 12 mo" },
-  { v: "24+", l: "Bookings closed via paid funnels" },
+  { v: "80", l: "Acres sold for clients · single project" },
+  { v: "3,000+", l: "Leads sourced via paid funnels" },
   { v: "~17×", l: "Best blended ROAS to date" },
-  { v: "2024", l: "Founded · IIM-led" },
 ];
 
 export default function AboutPage() {
