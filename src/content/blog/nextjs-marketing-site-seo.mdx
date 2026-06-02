@@ -1,0 +1,53 @@
+---
+title: "Why your Next.js marketing site isn't ranking (and the five things to fix this week)"
+description: "Most Next.js marketing sites are fast but invisible. Here's the SEO checklist we run before we hand any site off to a client."
+date: "2026-04-08"
+category: "Web"
+author: "Bricknclick"
+cover: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600&q=80&auto=format&fit=crop"
+tags: ["Next.js", "SEO", "Web development", "Core Web Vitals"]
+---
+
+Next.js gives you a fast site by default. It does *not* give you a discoverable one. The two are constantly conflated, and it's why so many otherwise excellent sites quietly never rank.
+
+Here's the checklist we run before we ship.
+
+## 1. Use the Metadata API everywhere, not just the layout
+
+Every route needs its own `title`, `description`, `canonical`, and OG image. A single shared `metadata` in `layout.tsx` is a tell that nobody on the team actually cares about search.
+
+Pages that share metadata don't rank. Google reads "duplicate content" before it reads anything else.
+
+## 2. Ship a sitemap and a robots file from the route handlers
+
+Next 14+ supports `app/sitemap.ts` and `app/robots.ts`. Use them. A `public/sitemap.xml` that ships once and rots is worse than nothing — it gives Search Console a stale map.
+
+Yours should rebuild on every deploy and reference every dynamic route.
+
+## 3. JSON-LD for everything you have a schema for
+
+`Organization` on the root layout. `Service` on services. `CreativeWork` or `Article` on case studies and posts. `BreadcrumbList` on every nested page.
+
+Structured data isn't a ranking factor *directly*. It is a ranking factor for *appearing in rich results*, which is how you actually earn the click in 2026.
+
+## 4. Real internal linking, not just nav
+
+Every blog post should link to two other posts and at least one money page (services, case studies). Every case study should link back to the service that delivered it.
+
+The strongest signal Google has for "this site is worth crawling deeply" is dense, contextual internal linking. Most marketing sites don't have any.
+
+## 5. Core Web Vitals on the *real* device
+
+Lighthouse on your M3 Pro is not Lighthouse on a mid-range Android. Run the test on a throttled CPU, on a 3G connection, then ship.
+
+LCP under 2.5s on a mid-range Android is a ranking factor. Period.
+
+## The compounding part
+
+The reason most of this isn't done is that it doesn't move the dial *this week*. It moves the dial 90 days from now. That's exactly why it works — the compounding curve favours the patient.
+
+Ship one of the five things this week. Ship the rest by the end of the month. Then check rankings in October.
+
+---
+
+**Need this audit run on your stack?** [Talk to us](/contact). We do free first-look audits.

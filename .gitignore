@@ -1,0 +1,27 @@
+# Node
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+build/
+
+# Production
+*.tsbuildinfo
+next-env.d.ts
+
+# Misc
+.DS_Store
+*.pem
+
+# Env — keep all real env files out of git; only the template is committed
+.env*
+!.env.example
+
+# Vercel
+.vercel
