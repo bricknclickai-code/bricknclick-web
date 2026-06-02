@@ -17,7 +17,11 @@ export function Hero() {
       ref={ref}
       className="relative grain isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[var(--background)] pb-12 pt-36"
     >
-      <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-7xl px-6">
+      {/* Animated orange orb — slow organic drift behind the hero copy.
+          Absolute, pointer-events-none, sits at z-0 so content stacks above. */}
+      <div aria-hidden className="orb-bg pointer-events-none absolute inset-[-10%]" />
+
+      <motion.div style={{ y, opacity }} className="relative mx-auto w-full max-w-7xl px-6">
         <h1 className="display text-[clamp(64px,14vw,260px)] text-[var(--foreground)]">
           <SplitReveal text="We don't" delay={0.05} />
           <SplitReveal text="just build." delay={0.15} />
@@ -73,7 +77,7 @@ export function Hero() {
       </motion.div>
 
       {/* Scroll cue */}
-      <div className="mx-auto mt-16 flex w-full max-w-7xl items-center justify-between px-6">
+      <div className="relative mx-auto mt-16 flex w-full max-w-7xl items-center justify-between px-6">
         <span className="mono text-[var(--muted-foreground)]">Scroll to explore ↓</span>
         <span className="mono text-[var(--muted-foreground)]">© 2026 — All rights reserved</span>
       </div>

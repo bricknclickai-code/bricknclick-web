@@ -6,7 +6,7 @@ import { Reveal, SplitReveal } from "../reveal";
 
 export function BigCta() {
   return (
-    <section className="relative isolate overflow-hidden bg-[var(--foreground)] py-32 text-[var(--background)]">
+    <section className="relative grain isolate overflow-hidden bg-[var(--foreground)] py-32 text-[var(--background)]">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 md:items-end">
         <div className="md:col-span-8">
           <span className="mono text-[var(--background)]/60">[ Let's build something ]</span>
