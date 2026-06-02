@@ -1,5 +1,6 @@
 import { Hero } from "@/components/home/hero";
 import { MarqueeBand } from "@/components/home/marquee-band";
+import { ProblemSolution } from "@/components/home/problem-solution";
 import { ServicesIndex } from "@/components/home/services-index";
 import { SelectedWork } from "@/components/home/selected-work";
 import { Process } from "@/components/home/process";
@@ -12,6 +13,7 @@ export default function HomePage() {
     <>
       <Hero />
       <MarqueeBand />
+      <ProblemSolution />
       <ServicesIndex />
       <SelectedWork />
       <Process />

@@ -36,7 +36,7 @@ export function Nav() {
       <motion.nav
         layout
         transition={{ type: "spring", stiffness: 240, damping: 28 }}
-        className={`flex items-center justify-between gap-4 transition-all duration-500 ${
+        className={`relative z-50 flex items-center justify-between gap-4 transition-all duration-500 ${
           scrolled
             ? "w-full max-w-3xl rounded-full border border-[var(--border-c)] bg-[var(--background)]/70 px-3 py-2 backdrop-blur-xl"
             : "w-full max-w-6xl px-6 py-3"
