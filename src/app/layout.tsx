@@ -6,6 +6,7 @@ import { LenisProvider } from "@/components/lenis-provider";
 import { Cursor } from "@/components/cursor";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { WhatsAppFab } from "@/components/whatsapp-fab";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -134,6 +135,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Nav />
           <main id="content">{children}</main>
           <Footer />
+          <WhatsAppFab />
         </ThemeProvider>
         <script
           type="application/ld+json"

@@ -17,6 +17,7 @@ const sitemap = [
       { href: "/services#ads", label: "Performance ads" },
       { href: "/services#web", label: "Web & product" },
       { href: "/services#content", label: "Content & brand" },
+      { href: "/services#ai-search", label: "AEO & GEO" },
     ],
   },
   {

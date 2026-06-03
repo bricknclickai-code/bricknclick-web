@@ -37,8 +37,8 @@ export function Process() {
   const lineH = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
 
   return (
-    <section ref={ref} className="relative mx-auto max-w-7xl px-6 py-32">
-      <div className="mb-16">
+    <section ref={ref} className="relative mx-auto max-w-7xl px-6 py-20 md:py-32">
+      <div className="mb-10 md:mb-16">
         <span className="mono text-[var(--muted-foreground)]">[ How we work ]</span>
         <h2 className="display mt-4 text-[clamp(40px,6vw,96px)]">
           <SplitReveal text="Four steps." />

@@ -79,6 +79,29 @@ export const services: Service[] = [
     ],
     metric: { value: "₹65L+", label: "client commissions in 12 months" },
   },
+  {
+    id: "ai-search",
+    index: "004",
+    title: "AEO & GEO",
+    tagline: "Be the answer. Not just the link.",
+    description:
+      "Buyers don't only Google anymore — they ask ChatGPT, Perplexity, Claude, and Google's AI Overviews. We optimize for the engines that synthesize answers, so your brand gets cited inside the AI's reply — not buried beneath it.",
+    capabilities: [
+      "AEO — Answer Engine Optimization (Google AI Overviews, Bing Copilot, voice)",
+      "GEO — Generative Engine Optimization (ChatGPT, Perplexity, Claude, Gemini)",
+      "FAQ, HowTo, QAPage schema rollout",
+      "llms.txt + structured data for AI crawlers",
+      "Brand entity establishment (Wikidata, Knowledge Graph, Crunchbase)",
+      "AI mention tracking (Profound, Otterly, AthenaHQ)",
+    ],
+    deliverables: [
+      "AEO/GEO audit + 90-day plan",
+      "Schema rollout across key pages",
+      "Citable content cluster — claims, data, definitions",
+      "Quarterly AI mention & citation reports",
+    ],
+    metric: { value: "30%+", label: "of B2B buyers now ask AI before Google" },
+  },
 ];
 
 export type Project = {

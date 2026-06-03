@@ -2,7 +2,7 @@ import { clients, trackedProjects } from "@/lib/data";
 
 export function ClientsStrip() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
+    <section className="mx-auto max-w-7xl px-6 py-12 md:py-20">
       <div className="grid gap-10 md:grid-cols-[1fr_3fr] md:gap-16">
         <p className="mono text-[var(--muted-foreground)]">
           [ Projects we've moved units on ]

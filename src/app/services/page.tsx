@@ -31,9 +31,10 @@ export default function ServicesPage() {
           <SplitReveal text="do." delay={0.1} className="text-[var(--color-accent)]" />
         </h1>
         <p className="mt-10 max-w-2xl text-balance text-lg text-[var(--muted-foreground)]">
-          Three practices, one team. Ads to drive demand, web to convert it,
-          content to compound it. We staff every engagement with strategists,
-          designers, and engineers — not handoffs.
+          Four practices, one team. Ads to drive demand, web to convert it,
+          content to compound it, AEO &amp; GEO to make sure your brand is the
+          one AI answers cite — not the one buried beneath them. We staff every
+          engagement with strategists, designers, and engineers — not handoffs.
         </p>
       </section>
 

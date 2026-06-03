@@ -23,9 +23,9 @@ export function ServicesIndex() {
         mx.set(e.clientX - r.left);
         my.set(e.clientY - r.top);
       }}
-      className="relative mx-auto max-w-7xl px-6 py-32"
+      className="relative mx-auto max-w-7xl px-6 py-20 md:py-32"
     >
-      <div className="mb-16 flex items-end justify-between">
+      <div className="mb-10 flex items-end justify-between md:mb-16">
         <div>
           <span className="mono text-[var(--muted-foreground)]">[ Services — 001/003 ]</span>
           <h2 className="display mt-4 text-[clamp(40px,6vw,96px)]">
@@ -43,7 +43,7 @@ export function ServicesIndex() {
       </div>
 
       <ul className="border-t border-[var(--border-c)]">
-        {services.map((s, i) => {
+        {services.slice(0, 3).map((s, i) => {
           const isHover = hover === i;
           return (
             <li
@@ -82,6 +82,21 @@ export function ServicesIndex() {
           );
         })}
       </ul>
+
+      {/* Minimal AEO & GEO mention — frames the shift without giving it equal weight to the core 3 */}
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+        <p className="mono text-[var(--muted-foreground)]">
+          <span className="text-[var(--color-accent)]">+ Also:</span>{" "}
+          Be the answer inside ChatGPT, Perplexity & Google AI Overviews
+        </p>
+        <Link
+          href="/services#ai-search"
+          data-cursor="explore"
+          className="mono underline-grow inline-flex shrink-0 items-center gap-2 text-[var(--foreground)]"
+        >
+          AEO & GEO <span aria-hidden>→</span>
+        </Link>
+      </div>
 
       {/* Hover preview card following cursor */}
       <motion.div

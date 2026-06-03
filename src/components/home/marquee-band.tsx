@@ -6,9 +6,10 @@ const words = [
   "Performance Ads",
   "Web & Product",
   "Content & Brand",
+  "AEO & GEO",
   "SEO that compounds",
   "Creative that ships",
-  "Brand systems",
+  "Be the answer",
   "We own it",
 ];
 

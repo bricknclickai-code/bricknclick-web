@@ -9,7 +9,7 @@ const stats = [
 
 export function NumbersBand() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-32">
+    <section className="mx-auto max-w-7xl px-6 py-20 md:py-32">
       <div className="grid gap-10 md:grid-cols-12 md:items-end">
         <div className="md:col-span-5">
           <span className="mono text-[var(--muted-foreground)]">[ By the numbers ]</span>

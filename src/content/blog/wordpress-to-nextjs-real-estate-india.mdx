@@ -1,0 +1,115 @@
+---
+title: "Why Indian Real Estate Developers Are Migrating from WordPress to Next.js in 2026 (And What It Does to Lead Quality)"
+description: "WordPress caps your real estate microsite at ~2.5s LCP. Next.js cuts that to under 1s. Here's what the migration actually does to ad spend, organic ranking, and qualified-lead volume — with real numbers from a project that closed ₹65L+ in commissions."
+date: "2026-06-03"
+category: "Web"
+author: "Bricknclick"
+cover: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80&auto=format&fit=crop"
+tags: ["Next.js", "Real estate marketing", "Core Web Vitals", "WordPress migration", "India"]
+---
+
+**TL;DR** — A WordPress real estate microsite typically loads in 2.5–4s. The same site rebuilt in Next.js lands under 1s. That delta isn't cosmetic: it lowers Meta ads CPL on the auction (Core Web Vitals affect ad-relevance scoring), lifts organic traffic 20–40% within 90 days, and converts inbound 2–3× harder. We rebuilt one such platform and watched ₹4L of blended ad spend produce ₹65–70L in commissions in 12 months. This post is the playbook.
+
+If you're a builder marketing head, a real estate aggregator, or a founder running paid-led project launches in India — and your site is still on WordPress — you're paying a hidden tax on every rupee you spend on Meta and Google. The tax is invisible because nobody puts "page speed cost" on the invoice. It just shows up as a higher CPL than your competitor pays, and a conversion rate that won't move no matter how good your creative gets.
+
+## The WordPress ceiling — and what it actually costs you
+
+A real estate microsite is content-heavy by definition: hero videos, photo galleries, floor plans, neighbourhood maps, brochures, lead-capture forms, WhatsApp deep-links. Each of those is a network round-trip and a render task.
+
+On WordPress, the typical stack is:
+- A theme that loads jQuery, three sliders, four font weights, a "Visual Composer" runtime, and Elementor.
+- Six to twelve plugins, each shipping its own CSS and JavaScript.
+- A LiteSpeed or W3 Total Cache layer that helps — until the next plugin update breaks it.
+
+The honest number: most Indian builder microsites we've audited hit a **Largest Contentful Paint (LCP) of 2.5–4 seconds** on a mid-range Android over 4G. That's the device 70%+ of your buyer is on.
+
+What that costs you, specifically:
+
+| Metric | At 1s LCP | At 3s LCP | Difference |
+|---|---|---|---|
+| Landing-page conversion rate | ~3.05% | ~1.12% | **2.7× lift** |
+| Meta ads auction "Quality Ranking" | Above average | Below average | Pays more per impression |
+| Google Quality Score (Search + PMax) | 8–10 | 5–7 | Higher CPC, lower position |
+| Crawl budget (organic) | Full | Throttled | Slower indexing of new projects |
+
+Nitropack's analysis of Core Web Vitals vs conversion across thousands of sites lands on roughly that 2.7× multiplier. The Meta and Google effects compound on top.
+
+For a project doing ₹50K/month on Meta ads, a 2.5s → 1s LCP improvement is the difference between 50 leads and 130. Same spend.
+
+## EMD landing-page networks on Next.js — without SEO cannibalization
+
+Indian real estate buyers Google project names, not categories. *"Bhartiya City Nikoo 7"*, *"Sobha One World"*, *"Godrej Aveline"*. That's the highest-intent moment in the entire funnel — and it's exactly where Exact-Match-Domain (EMD) landing pages can intercept demand.
+
+The catch: most marketing teams either don't do EMD at all, or they do it badly — spinning up duplicate pages that Google flags as cannibalization and downranks all of them.
+
+The Next.js-based approach we ship looks like:
+
+- **One Next.js app, multiple deployments.** Each EMD (e.g. `bhartiyacitykiadb.com`, `sattvahamletcity.com`) is a separate Vercel project pointing at the same codebase, with environment variables that switch the project context. Twelve sub-domains, one codebase to maintain.
+- **Per-project canonical strategy.** Each EMD canonicalizes to itself (not to the main hub) so Google treats them as independent entities. Hub site cross-links them with `rel="related"` and structured data instead of duplicating content.
+- **Dynamic OG images + project-specific schema.** Every EMD ships an OG image generated at build time from the project's hero + price + RERA number, plus `RealEstateAgent` and `Place` structured data so the project gets surfaced in Google's local pack.
+- **Lead pipe consolidation.** Every EMD posts to the same `/api/lead` endpoint with `?source=<emd-domain>`, so the sales team sees one inbox with full attribution intact.
+
+The whole network ships in a week if the foundation is set up right. Same builder, eight cities, eight URLs each owning the project-name SERP.
+
+→ The Perfect Neighbourhood platform runs exactly this stack. See the [Search Surround method on the case study](/work/perfect-neighbourhood) for how the EMDs feed back into the main hub's organic ranking.
+
+## Core Web Vitals as a Meta ads multiplier
+
+Meta's ad auction in 2026 weights Quality Ranking heavily, and Quality Ranking includes destination-page experience. Their docs are vague about the exact formula, but the directional effect is consistent across every account we've migrated:
+
+- **Below-average ad relevance + below-average landing-page quality** = you pay 1.4–2× the CPM your competitor pays.
+- **Above-average on both** = your CPM drops, your delivery improves, and the same creative starts spending budget faster (and getting better leads doing it).
+
+Concrete pattern from our Exora Farms account: after the platform-side LCP improvements landed, the same Meta creative that was producing leads at ~₹140 CPL started producing them at ~₹100 CPL. No creative change. No budget change. Just the auction reading the destination page as a faster, more relevant experience.
+
+[That account](/work/exora-farms) sold out 80 acres on ~₹3L of total spend with ~₹100 cost per lead on a ₹33L+ ticket. The platform foundation made that math work.
+
+## Case study: Perfect Neighbourhood — WP → Next.js → ₹65L+ in commissions
+
+Perfect Neighbourhood is a real-estate aggregator we rebuilt from WordPress to a full-stack Next.js platform — admin dashboard, headless CMS, schedule-a-visit flow, the EMD network described above.
+
+The 12-month picture after the migration:
+
+- **₹4L blended ad spend on Bhartiya City Nikoo 7** → ₹65–70L in commissions · 15–18 bookings · ~17× blended ROAS
+- **₹1.38L Google-only on the same project** → 80 qualified leads · 5 bookings
+- **₹1L Meta-only on Puravankara Northern Lights** → 8–9 bookings
+- **Platform now ranks #2–#4 organically** for Grade A builder projects (Lodha, Godrej, Bhartiya City, Sobha, Sattva)
+
+Read the [full Perfect Neighbourhood case study](/work/perfect-neighbourhood) for the chapter-by-chapter breakdown of how the platform, the EMD network, and the ad funnel compounded.
+
+## When the migration is worth it (and when it's not)
+
+The migration earns its keep when **at least two** of these are true:
+
+1. You're spending ₹50K+ per month on paid acquisition pointing at the WordPress site
+2. You're launching new projects often enough that "publish a new microsite in two days" is a real constraint
+3. Your team has someone who can own the marketing site as an actual product, not a side task
+4. You're competing for organic rankings on builder + project queries
+
+If none of those apply — say you're a single-project builder doing offline-led sales with the site as a brochure — WordPress is fine. Don't fix what isn't bleeding.
+
+## How long does it take?
+
+A real WordPress → Next.js migration for a multi-project real-estate platform — design, build, content port, admin dashboard, CMS, EMD network, CRM wiring — takes **8–12 weeks** in our experience. Faster if the team accepts an opinionated stack; slower if every decision is committee'd.
+
+The first 2 weeks are usually content audit + URL mapping (so the migration doesn't crater organic traffic on launch day). The next 6–8 weeks are build + integration. The final 2 weeks are launch + ranking-recovery monitoring.
+
+---
+
+## FAQ
+
+**Will I lose my organic rankings during the migration?**
+Only if you don't 301-map URLs correctly. We audit every indexed URL before migration and ship a redirect map on day one. In our last 4 migrations, organic traffic dipped 5–10% for ~14 days post-launch, then exceeded pre-migration baseline by week 6.
+
+**Do I have to give up the WordPress admin my marketing team is used to?**
+No. We ship a custom admin panel (or integrate with Sanity / Payload) that does the same job — add a project, edit photos, manage leads — with a UI built for the actual workflow, not WordPress's generic post editor.
+
+**What about WhatsApp + lead-form integrations my current site has?**
+All standard. Click-to-WhatsApp deep links, Meta Lead Form integration, CRM sync (Salesforce, HubSpot, Zoho, custom) — all wire into the Next.js stack the same way they would in WordPress, often cleaner.
+
+**How much does it cost?**
+A multi-project Next.js platform with admin + CMS + EMD network typically lands ₹6L–₹15L depending on scope. That's recovered in 60–90 days of paid spend at the CPL improvements we see post-migration. Not a small bill, but the breakeven math is short.
+
+---
+
+**Considering the migration?** [Talk to us →](/contact) — we audit the current WordPress site, map every URL, and give you a no-bullshit estimate of what the lift would look like for your specific spend mix.
