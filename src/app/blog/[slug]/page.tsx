@@ -84,6 +84,8 @@ export default async function BlogPostPage({
   const idx = all.findIndex((p) => p.slug === slug);
   const next = all[(idx + 1) % all.length];
 
+  const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://bricknclick.com";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -91,14 +93,39 @@ export default async function BlogPostPage({
     description: post.description,
     datePublished: post.date,
     dateModified: post.date,
-    author: { "@type": "Organization", name: post.author },
+    author: {
+      "@type": "Organization",
+      name: post.author,
+      url: SITE,
+      sameAs: [
+        "https://www.linkedin.com/company/bricknclick/",
+        "https://www.instagram.com/bricknclick.ai/",
+        "https://x.com/bricknclick_ai",
+      ],
+    },
     publisher: {
       "@type": "Organization",
       name: "Bricknclick",
-      logo: { "@type": "ImageObject", url: "/logo.png" },
+      logo: { "@type": "ImageObject", url: `${SITE}/logo.png` },
     },
     image: post.cover,
-    mainEntityOfPage: `/blog/${post.slug}`,
+    mainEntityOfPage: `${SITE}/blog/${post.slug}`,
+    keywords: post.tags?.join(", "),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Journal", item: `${SITE}/blog` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `${SITE}/blog/${post.slug}`,
+      },
+    ],
   };
 
   return (
@@ -170,6 +197,10 @@ export default async function BlogPostPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
     </>
   );

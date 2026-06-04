@@ -7,6 +7,8 @@ export type Service = {
   capabilities: string[];
   deliverables: string[];
   metric: { value: string; label: string };
+  /** AEO-friendly FAQ. Rendered on /services + emitted as FAQPage JSON-LD. */
+  faqs: { q: string; a: string }[];
 };
 
 export const services: Service[] = [
@@ -32,6 +34,24 @@ export const services: Service[] = [
       "Dashboards you actually read",
     ],
     metric: { value: "~17×", label: "best blended ROAS to date" },
+    faqs: [
+      {
+        q: "Do you handle creative production or do we provide the assets?",
+        a: "Both work. We have an in-house creative team that ships statics, reels, and motion on a weekly cadence — or we can plug into the brand assets you already have. Most engagements end up as a hybrid where we add velocity on top of your existing kit.",
+      },
+      {
+        q: "How fast can you launch a campaign?",
+        a: "1 week for audit + tracking setup, another week for creative production and launch. Mature accounts with existing creative can go live in 5 days.",
+      },
+      {
+        q: "Which platforms do you optimize?",
+        a: "Meta (Instagram + Facebook), Google Search, Performance Max, YouTube, and lifecycle tools (WhatsApp + email). For Indian real estate, the Meta + Click-to-WhatsApp combination produces our lowest CPL.",
+      },
+      {
+        q: "How is performance reported?",
+        a: "Weekly written review covering spend, leads, CPL, and creative-test results. Plus a live dashboard you can check daily. We grade ourselves on the same number you grade yourself on.",
+      },
+    ],
   },
   {
     id: "web",
@@ -55,6 +75,20 @@ export const services: Service[] = [
       "Handover docs + training",
     ],
     metric: { value: "#2–4", label: "avg. organic rank for client builders" },
+    faqs: [
+      {
+        q: "How long does a Next.js marketing site take?",
+        a: "4–8 weeks for a marketing-only site. 8–12 weeks for a full-stack platform with admin dashboard + CMS + CRM wiring. Faster if your team accepts an opinionated stack; slower if every decision needs committee approval.",
+      },
+      {
+        q: "Do you handle WordPress → Next.js migrations?",
+        a: "Yes — it's one of our most common engagements. We audit every indexed URL before migration, ship a 301 redirect map on day one, and typically see organic traffic exceed pre-migration baseline by week 6.",
+      },
+      {
+        q: "Do you offer ongoing maintenance after launch?",
+        a: "Yes, on a monthly retainer. Most clients keep us for content updates, performance monitoring, feature additions, and SEO/AEO ongoing work after the initial build.",
+      },
+    ],
   },
   {
     id: "content",
@@ -78,6 +112,24 @@ export const services: Service[] = [
       "Performance reports",
     ],
     metric: { value: "₹65L+", label: "client commissions in 12 months" },
+    faqs: [
+      {
+        q: "Do you handle brand identity from scratch?",
+        a: "Yes — full visual + verbal systems: logo, type, color, voice, guidelines. We typically run a 3–4 week brand sprint that ends with a complete kit your team can use across web, paid, and print.",
+      },
+      {
+        q: "What does your content production cycle look like?",
+        a: "Monthly editorial calendar agreed at the start of the engagement, then 2 long-form posts + 4–8 short-form pieces (reels, carousels) shipped per month. One reel for Exora Farms produced 50+ inbound leads on its own.",
+      },
+      {
+        q: "Can AI-cloned content rank in Google?",
+        a: "Yes, when it's structured for E-E-A-T: real authors, real claims, real data. We use AI for scale (project descriptions, neighbourhood guides, FAQ surfaces) and human-write the strategic pieces. Indexability has been clean across our clients.",
+      },
+      {
+        q: "Do you do video too?",
+        a: "Animated content for hero showcases, short-form video for paid + organic, founder-talking-head content for B2B. We don't do high-end corporate film — that's a production-house specialty, not ours.",
+      },
+    ],
   },
   {
     id: "ai-search",
@@ -101,6 +153,24 @@ export const services: Service[] = [
       "Quarterly AI mention & citation reports",
     ],
     metric: { value: "30%+", label: "of B2B buyers now ask AI before Google" },
+    faqs: [
+      {
+        q: "What's the difference between AEO and GEO?",
+        a: "AEO (Answer Engine Optimization) gets you cited inside Google AI Overviews, Bing Copilot, and voice assistants. GEO (Generative Engine Optimization) gets you cited inside ChatGPT, Perplexity, Claude, and Gemini. Different surfaces, overlapping techniques (FAQ schema, llms.txt, citable claims).",
+      },
+      {
+        q: "How long until I see AI engine citations?",
+        a: "6–9 months for first signs on long-tail queries. 12–18 months for measurable branded search lift. 24 months for AI citations to be a meaningful share of pipeline. AEO/GEO compounds — early-mover advantage is significant.",
+      },
+      {
+        q: "Should I do AEO/GEO instead of SEO?",
+        a: "No — AEO and GEO build ON TOP of SEO foundations. Without indexable, well-structured pages, AI engines have nothing to cite. SEO stays as the base layer; AEO and GEO are layers on top.",
+      },
+      {
+        q: "Can you guarantee citations in ChatGPT or Perplexity?",
+        a: "No — anyone who promises guaranteed AI citations is lying. What we can guarantee: the technical foundation (schema, llms.txt, citable content structure) and the off-platform footprint (Reddit, Quora, Wikidata) that makes your brand a citation candidate. The engines decide what they cite. We make sure your brand is in the running.",
+      },
+    ],
   },
 ];
 

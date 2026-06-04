@@ -21,6 +21,16 @@ const serviceJsonLd = (slug: string, name: string, description: string) => ({
   url: `https://bricknclick.com/services#${slug}`,
 });
 
+const faqJsonLd = (faqs: { q: string; a: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+
 export default function ServicesPage() {
   return (
     <>
@@ -103,12 +113,43 @@ export default function ServicesPage() {
                 </div>
               </div>
             </div>
+
+            {/* AEO-friendly FAQ — citable answers, FAQPage JSON-LD emitted below */}
+            <div className="mx-auto max-w-7xl px-6 pb-32">
+              <div className="grid gap-12 md:grid-cols-12">
+                <div className="md:col-span-4">
+                  <span className="mono text-[var(--muted-foreground)]">FAQ</span>
+                  <h3 className="display mt-4 text-3xl md:text-4xl">
+                    Common questions about {s.title.toLowerCase()}
+                  </h3>
+                </div>
+                <dl className="md:col-span-7 md:col-start-6">
+                  {s.faqs.map((f) => (
+                    <div
+                      key={f.q}
+                      className="border-t border-[var(--border-c)] py-6 first:border-t-0 first:pt-0"
+                    >
+                      <dt className="display text-xl md:text-2xl">{f.q}</dt>
+                      <dd className="mt-3 text-[var(--muted-foreground)] md:text-lg">
+                        {f.a}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
           </div>
 
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(serviceJsonLd(s.id, s.title, s.description)),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqJsonLd(s.faqs)),
             }}
           />
         </section>
