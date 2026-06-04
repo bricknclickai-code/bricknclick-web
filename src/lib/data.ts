@@ -243,21 +243,27 @@ export const projects: Project[] = [
   },
 ];
 
-// Real signals on the clients strip. Direct clients (full engagements) listed
-// first; the Bhartiya City and Puravankara projects are campaign-specific work
-// run via the Perfect Neighbourhood engagement.
+// Direct clients — brokers / aggregators we run end-to-end work for.
 export const clients = [
-  "Exora Farms",
+  "ThinkPropRealty",
   "Perfect Neighbourhood",
-  "Bhartiya City Nikoo 7",
-  "Puravankara Northern Lights",
+  "Exora Farms",
+  "HomePlusRealty",
+  "RealDoor",
 ];
 
-export const trackedProjects = [
-  "Lodha",
-  "Godrej",
-  "Sobha",
-  "Sattva",
-  "Prestige",
-  "Brigade",
+// Builder projects we've actively run Meta + Google paid funnels on (real
+// units moved, not just rankings). Mix of three brokers' books of work.
+export const builderProjects = [
+  "Lodha Sadahalli",
+  "TVS Emerald Altura",
+  "Puravankara Northern Lights",
+  "Assetz Zen & Sato",
+  "Assetz 22 & Crust",
+  "The MidSummer Rain Villa",
+  "Bhartiya City Nikoo 7",
 ];
+
+// Headline count of independent channel partners (one-off small brokers / agents)
+// we've activated paid campaigns for. Aggregate, not enumerated by name.
+export const channelPartnersCount = 20;

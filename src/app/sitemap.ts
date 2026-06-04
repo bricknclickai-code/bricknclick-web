@@ -7,14 +7,26 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://bricknclick.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const staticRoutes = ["", "/services", "/work", "/about", "/blog", "/contact"].map(
-    (path) => ({
-      url: `${SITE}${path}`,
-      lastModified: now,
-      changeFrequency: "weekly" as const,
-      priority: path === "" ? 1 : 0.8,
-    })
-  );
+  const staticRoutes = [
+    "",
+    "/services",
+    "/work",
+    "/about",
+    "/blog",
+    "/contact",
+  ].map((path) => ({
+    url: `${SITE}${path}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: path === "" ? 1 : 0.8,
+  }));
+
+  const legalRoutes = ["/privacy", "/terms"].map((path) => ({
+    url: `${SITE}${path}`,
+    lastModified: now,
+    changeFrequency: "yearly" as const,
+    priority: 0.3,
+  }));
 
   const workRoutes = projects.map((p) => ({
     url: `${SITE}/work/${p.slug}`,
@@ -30,5 +42,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...workRoutes, ...blogRoutes];
+  return [...staticRoutes, ...workRoutes, ...blogRoutes, ...legalRoutes];
 }

@@ -105,7 +105,7 @@ export default async function CaseStudyPage({
               height={1350}
               className="relative h-full w-full object-cover md:rounded-md"
               priority
-              sizes="100vw"
+              sizes="(min-width: 1280px) 1200px, 92vw"
             />
           </div>
         </Reveal>

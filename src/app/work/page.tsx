@@ -5,6 +5,7 @@ import { projects, type Project } from "@/lib/data";
 import { Reveal, SplitReveal } from "@/components/reveal";
 import { BigCta } from "@/components/home/big-cta";
 import { Magnetic } from "@/components/magnetic";
+import { LiveCampaigns } from "@/components/work/live-campaigns";
 
 export const metadata: Metadata = {
   title: "Work — Selected case studies",
@@ -28,6 +29,8 @@ export default function WorkPage() {
           numbers — the kind we'd want a future client to see before they call.
         </p>
       </section>
+
+      <LiveCampaigns />
 
       <section className="border-t border-[var(--border-c)]">
         {projects.map((project, i) => (
@@ -94,7 +97,7 @@ function FeaturedCaseRow({ project, index }: { project: Project; index: number }
                 src={project.cover}
                 alt={`${project.client} — ${project.title}`}
                 fill
-                sizes="(min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 768px) 50vw, 92vw"
                 className="object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                 priority={index === 0}
               />

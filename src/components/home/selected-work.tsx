@@ -115,7 +115,7 @@ function MobileChapterCard({ project, index }: { project: Project; index: number
             src={project.cover}
             alt={`${project.client} — ${project.title}`}
             fill
-            sizes="100vw"
+            sizes="(min-width: 640px) 600px, 92vw"
             className="object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04]"
             priority={index === 0}
           />

@@ -200,7 +200,7 @@ export default function PerfectNeighbourhoodCase() {
                   width={1200}
                   height={750}
                   className="h-full w-full object-cover"
-                  sizes="(min-width: 768px) 56vw, 100vw"
+                  sizes="(min-width: 768px) 56vw, 92vw"
                   priority
                 />
               </div>
@@ -240,7 +240,7 @@ export default function PerfectNeighbourhoodCase() {
                   width={1100}
                   height={687}
                   className="h-full w-full object-cover"
-                  sizes="(min-width: 768px) 48vw, 100vw"
+                  sizes="(min-width: 768px) 48vw, 92vw"
                 />
               </div>
             </Reveal>

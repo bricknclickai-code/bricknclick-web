@@ -61,6 +61,20 @@ export function Hero() {
       </motion.div>
 
       <motion.div style={{ y, opacity }} className="relative mx-auto w-full max-w-7xl px-6">
+        {/* IIM credential strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 inline-flex items-center gap-3 md:mb-8"
+        >
+          <span aria-hidden className="h-px w-8 bg-[var(--color-accent)]" />
+          <span className="mono text-[var(--color-accent)]">
+            IIM-led &amp; mentored
+          </span>
+          <span aria-hidden className="h-px w-8 bg-[var(--color-accent)]" />
+        </motion.div>
+
         <h1 className="display text-[clamp(56px,10vw,180px)] text-[var(--foreground)]">
           <SplitReveal text="We don't" delay={0.05} />
           <SplitReveal text="just build." delay={0.15} />

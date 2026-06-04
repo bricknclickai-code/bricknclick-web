@@ -45,7 +45,7 @@ export default function BlogPage() {
                     src={latest.cover}
                     alt={latest.title}
                     fill
-                    sizes="(min-width: 768px) 60vw, 100vw"
+                    sizes="(min-width: 768px) 60vw, 92vw"
                     className="object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                   />
                 ) : null}

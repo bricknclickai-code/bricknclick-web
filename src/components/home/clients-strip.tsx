@@ -1,17 +1,23 @@
-import { clients, trackedProjects } from "@/lib/data";
+import { clients, builderProjects, channelPartnersCount } from "@/lib/data";
 
 export function ClientsStrip() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-12 md:py-20">
+      {/* Direct clients — brokers we run end-to-end work for */}
       <div className="grid gap-10 md:grid-cols-[1fr_3fr] md:gap-16">
-        <p className="mono text-[var(--muted-foreground)]">
-          [ Projects we've moved units on ]
-        </p>
-        <ul className="grid grid-cols-1 gap-y-4 text-2xl md:grid-cols-2 md:text-3xl">
+        <div>
+          <p className="mono text-[var(--muted-foreground)]">
+            [ Direct clients ]
+          </p>
+          <p className="mono mt-3 text-[var(--color-accent)]">
+            + {channelPartnersCount} individual channel partners
+          </p>
+        </div>
+        <ul className="grid grid-cols-1 gap-y-3 text-2xl md:grid-cols-2 md:text-3xl">
           {clients.map((c) => (
             <li
               key={c}
-              className="display tracking-[-0.03em] text-[var(--foreground)]/90 hover:text-[var(--foreground)]"
+              className="display tracking-[-0.03em] text-[var(--foreground)]/90 transition-colors hover:text-[var(--foreground)]"
             >
               {c}
             </li>
@@ -19,18 +25,21 @@ export function ClientsStrip() {
         </ul>
       </div>
 
-      <div className="mt-12 grid gap-6 border-t border-[var(--border-c)] pt-8 md:grid-cols-[1fr_3fr] md:gap-16">
+      {/* Builder projects we've actively run paid funnels on */}
+      <div className="mt-12 grid gap-10 border-t border-[var(--border-c)] pt-10 md:grid-cols-[1fr_3fr] md:gap-16">
         <p className="mono text-[var(--muted-foreground)]">
-          [ Tracked & ranked for ]
+          [ Builder projects · Meta + Google ]
         </p>
-        <p className="mono flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-[var(--muted-foreground)]">
-          {trackedProjects.map((b, i) => (
-            <span key={b} className="inline-flex items-center gap-3">
-              {b}
-              {i < trackedProjects.length - 1 ? <span aria-hidden>·</span> : null}
-            </span>
+        <ul className="flex flex-wrap items-center gap-x-3 gap-y-3 text-base text-[var(--muted-foreground)] md:text-lg">
+          {builderProjects.map((p, i) => (
+            <li key={p} className="inline-flex items-center gap-3">
+              <span className="text-[var(--foreground)]">{p}</span>
+              {i < builderProjects.length - 1 ? (
+                <span aria-hidden className="text-[var(--color-accent)]">·</span>
+              ) : null}
+            </li>
           ))}
-        </p>
+        </ul>
       </div>
     </section>
   );

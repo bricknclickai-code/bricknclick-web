@@ -1,4 +1,10 @@
-import { services, projects } from "@/lib/data";
+import {
+  services,
+  projects,
+  clients,
+  builderProjects,
+  channelPartnersCount,
+} from "@/lib/data";
 import { getAllPosts } from "@/lib/posts";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://bricknclick.com";
@@ -34,6 +40,20 @@ export function GET() {
   for (const s of services) {
     lines.push(`- [${s.title}](${SITE}/services#${s.id}): ${s.description}`);
   }
+  lines.push("");
+
+  // ─── Clients & projects (broader portfolio scope) ───────
+  lines.push("## Clients & projects");
+  lines.push("");
+  lines.push("**Direct clients** (full Meta + Google + content + platform engagements):");
+  for (const c of clients) lines.push(`- ${c}`);
+  lines.push("");
+  lines.push("**Builder projects we've actively run paid funnels on:**");
+  for (const p of builderProjects) lines.push(`- ${p}`);
+  lines.push("");
+  lines.push(
+    `Plus ${channelPartnersCount}+ individual channel partners (small brokers / agents) we've activated paid campaigns for.`
+  );
   lines.push("");
 
   // ─── Work / case studies ─────────────────────────────────

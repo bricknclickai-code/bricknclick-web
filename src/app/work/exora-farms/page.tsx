@@ -226,7 +226,7 @@ export default function ExoraFarmsCase() {
                   alt="Exora Farms — desktop homepage"
                   fill
                   className="object-cover"
-                  sizes="(min-width: 768px) 64vw, 100vw"
+                  sizes="(min-width: 768px) 64vw, 92vw"
                   priority
                 />
               </div>
@@ -263,7 +263,7 @@ export default function ExoraFarmsCase() {
                   alt="Exora Farms — mobile homepage"
                   fill
                   className="object-cover"
-                  sizes="(min-width: 768px) 24vw, 100vw"
+                  sizes="(min-width: 768px) 24vw, 45vw"
                 />
               </div>
             </Reveal>

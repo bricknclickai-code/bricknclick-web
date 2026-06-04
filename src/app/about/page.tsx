@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Reveal, SplitReveal } from "@/components/reveal";
 import { BigCta } from "@/components/home/big-cta";
+
+const team = [
+  {
+    name: "Deepak",
+    title: "Performance Marketing & SEO Specialist",
+    image: "/Team/deepak.png",
+  },
+  {
+    name: "Aman",
+    title: "Software Developer & Content Strategist",
+    image: "/Team/aman.png",
+  },
+];
 
 export const metadata: Metadata = {
   title: "About — A digital agency that ships",
   description:
-    "Bricknclick is a small, senior team that runs like an in-house unit. Strategy, design, engineering, and media — under one accountable roof.",
+    "Bricknclick is a senior team that runs like an in-house unit. Strategy, design, engineering, and media — under one accountable roof.",
   alternates: { canonical: "/about" },
 };
 
@@ -18,7 +32,7 @@ const values = [
   },
   {
     n: "02",
-    title: "Small team, senior hands",
+    title: "Senior hands, no handoffs",
     body:
       "Every engagement runs with the people who'll actually do the work. No bait-and-switch, no junior shuffle.",
   },
@@ -39,7 +53,7 @@ const values = [
 const numbers = [
   { v: "₹65L+", l: "Client commissions · 12 mo" },
   { v: "80", l: "Acres sold for clients · single project" },
-  { v: "3,000+", l: "Leads sourced via paid funnels" },
+  { v: "5,200+", l: "Leads sourced via paid funnels" },
   { v: "~17×", l: "Best blended ROAS to date" },
 ];
 
@@ -47,7 +61,13 @@ export default function AboutPage() {
   return (
     <>
       <section className="mx-auto max-w-7xl px-6 pt-40 pb-24">
-        <span className="mono text-[var(--muted-foreground)]">[ About — 2026 ]</span>
+        <div className="inline-flex items-center gap-3">
+          <span aria-hidden className="h-px w-8 bg-[var(--color-accent)]" />
+          <span className="mono text-[var(--color-accent)]">
+            IIM-led &amp; mentored
+          </span>
+          <span aria-hidden className="h-px w-8 bg-[var(--color-accent)]" />
+        </div>
         <h1 className="display mt-6 text-[clamp(56px,11vw,200px)]">
           <SplitReveal text="A studio" />
           <SplitReveal text="that owns it." delay={0.1} />
@@ -73,8 +93,8 @@ export default function AboutPage() {
         <div className="space-y-6 md:col-span-7">
           <Reveal>
             <p className="text-xl text-balance md:text-2xl">
-              Bricknclick is a small, senior team running ads, web, and content
-              for ambitious brands. We were tired of watching agencies hand off
+              Bricknclick is a senior team running ads, web, and content for
+              ambitious brands. We were tired of watching agencies hand off
               between silos and call it a campaign. So we built one team that
               owns the outcome — end to end.
             </p>
@@ -124,6 +144,42 @@ export default function AboutPage() {
                 {v.body}
               </p>
             </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* The team — founder portraits anchor the IIM-led credential
+          with actual faces, not just a text claim. Circular avatars. */}
+      <section className="mx-auto max-w-7xl px-6 py-20 md:py-32">
+        <div className="mb-12 md:mb-16">
+          <span className="mono text-[var(--muted-foreground)]">[ The team ]</span>
+          <h2 className="display mt-4 text-[clamp(40px,6vw,96px)]">
+            <SplitReveal text="The people" />
+            <SplitReveal text="behind the work." delay={0.1} />
+          </h2>
+        </div>
+
+        <ul className="grid gap-12 sm:grid-cols-2 md:gap-16">
+          {team.map((m, i) => (
+            <Reveal key={m.name} delay={i * 0.1}>
+              <article className="group flex flex-col items-center text-center">
+                <div className="relative h-44 w-44 overflow-hidden rounded-full border border-[var(--border-c)] bg-[var(--card)] md:h-56 md:w-56">
+                  <Image
+                    src={m.image}
+                    alt={`${m.name} — ${m.title}`}
+                    fill
+                    sizes="(min-width: 768px) 224px, 176px"
+                    className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-[1.05]"
+                  />
+                </div>
+                <h3 className="display mt-6 text-3xl tracking-[-0.03em] md:text-4xl">
+                  {m.name}
+                </h3>
+                <p className="mono mt-3 text-[var(--muted-foreground)]">
+                  {m.title}
+                </p>
+              </article>
+            </Reveal>
           ))}
         </ul>
       </section>

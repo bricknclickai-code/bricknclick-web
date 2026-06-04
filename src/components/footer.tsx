@@ -65,8 +65,16 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-20 flex flex-col-reverse gap-4 border-t border-[var(--border-c)] pt-6 text-xs text-[var(--muted-foreground)] md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Bricknclick. All rights reserved.</p>
+        <div className="mt-20 flex flex-col gap-4 border-t border-[var(--border-c)] pt-6 text-xs text-[var(--muted-foreground)] md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <p>© {new Date().getFullYear()} Bricknclick. All rights reserved.</p>
+            <Link href="/privacy" className="underline-grow">
+              Privacy
+            </Link>
+            <Link href="/terms" className="underline-grow">
+              Terms
+            </Link>
+          </div>
           <p className="mono">Founded by IIM alumni · Crafted in India · Shipped worldwide</p>
         </div>
       </div>
