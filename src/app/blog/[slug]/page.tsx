@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getAllPosts, getPost } from "@/lib/posts";
 import { SplitReveal } from "@/components/reveal";
 import { BigCta } from "@/components/home/big-cta";
@@ -66,6 +67,35 @@ const mdxComponents = {
   blockquote: (props: any) => (
     <blockquote
       className="my-8 border-l-4 border-[var(--color-accent)] pl-6 text-2xl leading-snug text-balance"
+      {...props}
+    />
+  ),
+  // Table elements — enabled by remark-gfm plugin passed to MDXRemote.
+  // Wrapper allows horizontal scroll on overflowing tables (mobile-safe).
+  table: (props: any) => (
+    <div className="my-10 -mx-6 overflow-x-auto md:mx-0">
+      <table
+        className="w-full border-collapse text-left text-base"
+        {...props}
+      />
+    </div>
+  ),
+  thead: (props: any) => (
+    <thead className="border-b border-[var(--border-c)]" {...props} />
+  ),
+  tbody: (props: any) => <tbody {...props} />,
+  tr: (props: any) => (
+    <tr className="border-b border-[var(--border-c)]/60" {...props} />
+  ),
+  th: (props: any) => (
+    <th
+      className="mono px-4 py-3 align-bottom text-left text-[11px] tracking-[0.08em] text-[var(--muted-foreground)] first:pl-6 md:first:pl-0"
+      {...props}
+    />
+  ),
+  td: (props: any) => (
+    <td
+      className="px-4 py-4 align-top text-[var(--foreground)]/85 first:pl-6 md:first:pl-0"
       {...props}
     />
   ),
@@ -172,7 +202,15 @@ export default async function BlogPostPage({
         ) : null}
 
         <div className="prose mx-auto max-w-3xl px-6 py-16">
-          <MDXRemote source={post.content} components={mdxComponents} />
+          <MDXRemote
+            source={post.content}
+            components={mdxComponents}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkGfm],
+              },
+            }}
+          />
         </div>
 
         <section className="mx-auto max-w-3xl px-6 pb-20">
