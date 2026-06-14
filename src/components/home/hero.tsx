@@ -1,11 +1,23 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Magnetic } from "../magnetic";
 import { SplitReveal } from "../reveal";
+import { RotatingWord } from "./rotating-word";
+import { CountUp } from "../count-up";
 import { eoiLabel } from "@/lib/eoi";
+
+// Each rotating verb maps to a service, so the headline itself teaches the
+// offer — "We don't just build / advertise / create / rank — we own it." The
+// service row below highlights the matching service in sync.
+const pitch = [
+  { verb: "build.", service: "Web & Product" },
+  { verb: "advertise.", service: "Performance Ads" },
+  { verb: "create.", service: "Content & Brand" },
+  { verb: "rank.", service: "AEO & GEO" },
+];
 
 const heroMetrics = [
   { value: "50+", label: "EOIs via Meta ads · 1 project" },
@@ -20,18 +32,26 @@ export function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 160]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  // Drives both the rotating headline verb and the highlighted service chip.
+  const reduce = useReducedMotion();
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (reduce || paused) return;
+    const t = setInterval(() => setActive((p) => (p + 1) % pitch.length), 2200);
+    return () => clearInterval(t);
+  }, [reduce, paused]);
+
   return (
     <section
       ref={ref}
       className="relative grain isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[var(--background)] pb-12 pt-24 md:pt-36"
     >
-      {/* Animated orange orb — slow organic drift behind the hero copy.
-          Absolute, pointer-events-none, sits at z-0 so content stacks above. */}
+      {/* Animated orange orb — slow organic drift behind the hero copy. */}
       <div aria-hidden className="orb-bg pointer-events-none absolute inset-[-10%]" />
 
-      {/* Hero receipts — vertical metrics stack pinned to the right gutter on xl+.
-          Hidden below xl so it doesn't overlap the headline. The NumbersBand
-          section lower on the page covers the same proof for smaller viewports. */}
+      {/* Hero receipts — vertical metrics stack pinned to the right gutter on xl+. */}
       <motion.div
         initial={{ opacity: 0, x: 24 }}
         animate={{ opacity: 1, x: 0 }}
@@ -53,7 +73,7 @@ export function Hero() {
               className="border-t border-[var(--border-c)] pt-3"
             >
               <p className="display text-3xl leading-none text-[var(--color-accent)] 2xl:text-4xl">
-                {m.value}
+                <CountUp value={m.value} delay={0.6 + i * 0.1} />
               </p>
               <p className="mono mt-2 text-[var(--muted-foreground)]">{eoiLabel(m.label)}</p>
             </motion.li>
@@ -78,22 +98,62 @@ export function Hero() {
 
         <h1 className="display text-[clamp(56px,10vw,180px)] text-[var(--foreground)]">
           <SplitReveal text="We don't" delay={0.05} />
-          <SplitReveal text="just build." delay={0.15} />
-          <span className="flex flex-wrap items-baseline gap-x-[0.22em]">
-            <SplitReveal
-              text="We own"
-              delay={0.25}
+          <span className="flex flex-wrap items-baseline gap-x-[0.18em]">
+            <SplitReveal text="just" delay={0.15} />
+            <RotatingWord
+              words={pitch.map((p) => p.verb)}
+              index={active}
               className="text-[var(--color-accent)]"
             />
-            <SplitReveal text="it." delay={0.35} />
           </span>
+          <SplitReveal text="We own it." delay={0.25} />
         </h1>
 
-        <div className="mt-12 grid gap-10 md:grid-cols-12">
+        {/* Service row — names the offer in-fold and stays synced to the
+            rotating verb. Hover a service to drive the headline yourself. */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          onMouseLeave={() => setPaused(false)}
+          className="mt-8 flex flex-wrap items-center gap-2"
+        >
+          <span className="mono mr-1 text-[var(--muted-foreground)]">What we own:</span>
+          {pitch.map((p, i) => (
+            <Link
+              key={p.service}
+              href="/services"
+              data-cursor="services"
+              onMouseEnter={() => {
+                setActive(i);
+                setPaused(true);
+              }}
+              className="relative inline-flex items-center rounded-full border border-[var(--border-c)] px-3 py-1.5 text-sm"
+            >
+              {i === active && (
+                <motion.span
+                  layoutId="pitchPill"
+                  aria-hidden
+                  className="absolute inset-0 rounded-full bg-[var(--color-accent)]"
+                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                />
+              )}
+              <span
+                className={`relative z-10 transition-colors duration-200 ${
+                  i === active ? "text-black" : "text-[var(--muted-foreground)]"
+                }`}
+              >
+                {p.service}
+              </span>
+            </Link>
+          ))}
+        </motion.div>
+
+        <div className="mt-10 grid gap-10 md:grid-cols-12">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.55 }}
             className="md:col-span-5 md:col-start-1 text-balance text-base text-[var(--muted-foreground)] sm:text-lg"
           >
             Bricknclick is a digital agency that ships. Performance ads,
@@ -104,7 +164,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.65 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
             className="md:col-span-4 md:col-start-9 flex flex-wrap items-center gap-3 md:justify-end"
           >
             <Magnetic strength={0.3}>
@@ -129,8 +189,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Mobile / tablet receipts — 2 metrics on phones, 4 on tablets+.
-            Hidden on xl+ (where the right-rail receipts take over). */}
+        {/* Mobile / tablet receipts — 2 metrics on phones, 4 on tablets+. */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -148,13 +207,12 @@ export function Hero() {
                   delay: 0.9 + i * 0.07,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                // Show only first 2 on phones (< sm = 640px); show all 4 from sm onward
                 className={`border-l border-[var(--border-c)] pl-3 first:border-l-0 first:pl-0 sm:pl-4 ${
                   i >= 2 ? "hidden sm:block" : ""
                 }`}
               >
                 <p className="display text-2xl leading-none text-[var(--color-accent)] sm:text-3xl">
-                  {m.value}
+                  <CountUp value={m.value} delay={0.95 + i * 0.08} />
                 </p>
                 <p className="mono mt-1.5 text-[10px] leading-snug text-[var(--muted-foreground)]">
                   {eoiLabel(m.label)}
@@ -165,8 +223,7 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll cue — hidden on mobile (the receipts above already anchor the
-          fold; the down-arrow + copyright are noise on small viewports). */}
+      {/* Scroll cue — hidden on mobile. */}
       <div className="relative mx-auto mt-16 hidden w-full max-w-7xl items-center justify-between px-6 md:flex">
         <span className="mono text-[var(--muted-foreground)]">Scroll to explore ↓</span>
         <span className="mono text-[var(--muted-foreground)]">© 2026 — All rights reserved</span>

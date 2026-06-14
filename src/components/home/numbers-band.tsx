@@ -25,14 +25,16 @@ export function NumbersBand() {
         </div>
 
         <div className="md:col-span-7">
-          <ul className="grid grid-cols-2 gap-y-12 border-t border-[var(--border-c)] pt-10 md:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-x-10 gap-y-8 border-t border-[var(--border-c)] pt-10 sm:grid-cols-2 sm:gap-y-12">
             {stats.map((s, i) => (
               <Reveal key={s.l} delay={i * 0.06}>
-                <li className="border-l border-[var(--border-c)] pl-6">
-                  <p className="display text-5xl text-[var(--color-accent)] md:text-7xl">
+                <li className="border-l border-[var(--border-c)] pl-5">
+                  <p className="display text-[clamp(40px,10vw,72px)] leading-none text-[var(--color-accent)]">
                     {s.v}
                   </p>
-                  <p className="mono mt-3 text-[var(--muted-foreground)]">{eoiLabel(s.l)}</p>
+                  <p className="mono mt-3 text-[13px] leading-snug text-[var(--muted-foreground)]">
+                    {eoiLabel(s.l)}
+                  </p>
                 </li>
               </Reveal>
             ))}
