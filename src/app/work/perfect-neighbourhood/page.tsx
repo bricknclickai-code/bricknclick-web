@@ -3,18 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal, SplitReveal } from "@/components/reveal";
 import { BigCta } from "@/components/home/big-cta";
+import { eoiLabel } from "@/lib/eoi";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://bricknclick.com";
 
 export const metadata: Metadata = {
-  title: "Perfect Neighbourhood — ₹5L in. ₹65L+ out.",
+  title: "Perfect Neighbourhood — 50+ EOIs from one Meta campaign",
   description:
-    "How we rebuilt a real-estate platform from WordPress to Next.js and ran the ad funnel and SEO network that paid for it. ₹65L+ commissions, 24+ bookings, #2–#4 organic ranking for Grade A builder projects.",
+    "How we rebuilt a real-estate platform from WordPress to Next.js and ran the ad funnel and SEO network that paid for it. 50+ EOIs from one Meta campaign, 24+ bookings, ~17× ROAS, #2–#4 organic ranking for Grade A builder projects.",
   alternates: { canonical: "/work/perfect-neighbourhood" },
   openGraph: {
     title: "Perfect Neighbourhood · Bricknclick",
     description:
-      "₹4L → ₹65–70L on Bhartiya City Nikoo 7. ₹1L → 8–9 bookings on Puravankara Northern Lights. A platform that now ranks itself.",
+      "₹4L → 50+ EOIs and 15–18 bookings on Bhartiya City Nikoo 7. ₹1L → 8–9 bookings on Puravankara Northern Lights. A platform that now ranks itself.",
     images: [
       {
         url: "/work/perfect-neighbourhood-1.png",
@@ -37,8 +38,8 @@ const funnelCards = [
     project: "Bhartiya City Nikoo 7",
     channel: "Meta + Google · blended",
     spend: "₹4 L",
-    outcome: "₹65–70 L",
-    outcomeLabel: "in commissions",
+    outcome: "50+ EOIs",
+    outcomeLabel: "expressions of interest",
     line1: "15–18 bookings",
     line2: "~17× blended ROAS",
     accent: "#FF6B1A",
@@ -80,7 +81,7 @@ const jsonLd = {
   about: "Perfect Neighbourhood (perfectneighbourhood.com)",
   dateCreated: "2024",
   description:
-    "Full-stack Next.js platform rebuild, Search Surround EMD network, and performance ad funnel for a real-estate aggregator. ₹65L+ commissions on ~₹6.4L blended ad spend.",
+    "Full-stack Next.js platform rebuild, Search Surround EMD network, and performance ad funnel for a real-estate aggregator. 50+ EOIs and 24+ bookings on ~₹6.4L blended ad spend.",
   url: `${SITE}/work/perfect-neighbourhood`,
 };
 
@@ -123,12 +124,12 @@ export default function PerfectNeighbourhoodCase() {
             </div>
 
             <h1 className="display mt-10 text-[clamp(64px,14vw,260px)] text-[var(--foreground)]">
-              <SplitReveal text="₹5L in." delay={0.05} />
               <SplitReveal
-                text="₹65L+ out."
-                delay={0.2}
+                text="50+ EOIs."
+                delay={0.05}
                 className="text-[var(--color-accent)]"
               />
+              <SplitReveal text="One Meta campaign." delay={0.2} />
             </h1>
 
             <div className="mt-12 grid gap-10 md:grid-cols-12">
@@ -532,7 +533,7 @@ export default function PerfectNeighbourhoodCase() {
             <p className="mono text-[var(--background)]/60">The 12-month picture</p>
             <div className="mt-10 grid grid-cols-2 gap-y-12 md:grid-cols-4">
               {[
-                { v: "₹65L+", l: "Commissions generated" },
+                { v: "50+", l: "EOIs via Meta ads · 1 project" },
                 { v: "24+", l: "Bookings closed" },
                 { v: "80+", l: "Qualified leads (1 campaign)" },
                 { v: "#2–4", l: "Avg organic rank, Grade A" },
@@ -541,7 +542,7 @@ export default function PerfectNeighbourhoodCase() {
                   <p className="display text-6xl text-[var(--color-accent)] md:text-7xl">
                     {m.v}
                   </p>
-                  <p className="mono mt-2 text-[var(--background)]/60">{m.l}</p>
+                  <p className="mono mt-2 text-[var(--background)]/60">{eoiLabel(m.l)}</p>
                 </div>
               ))}
             </div>

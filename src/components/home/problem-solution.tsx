@@ -2,6 +2,8 @@
 
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 
 type Beat = {
   text: string;
@@ -17,6 +19,17 @@ const beats: Beat[] = [
 ];
 
 export function ProblemSolution() {
+  return (
+    <>
+      {/* Desktop: scroll-pinned storytelling. Tall + immersive. */}
+      <ScrollStory />
+      {/* Mobile: same beats as a compact card stack — no 500vh scroll marathon. */}
+      <WhyCards />
+    </>
+  );
+}
+
+function ScrollStory() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -39,7 +52,7 @@ export function ProblemSolution() {
     <section
       ref={ref}
       aria-label="Why Bricknclick"
-      className="relative isolate bg-[var(--background)]"
+      className="relative isolate hidden bg-[var(--background)] md:block"
       style={{ height: `${beats.length * 100}vh` }}
     >
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-6">
@@ -151,5 +164,54 @@ function ScrollCue({ progress }: { progress: MotionValue<number> }) {
       <span className="inline-block animate-bounce">↓</span>{" "}
       <span className="ml-2">Scroll</span>
     </motion.div>
+  );
+}
+
+/**
+ * Mobile rendering of the same narrative: three problem cards, the diagnosis,
+ * then the resolution — all on one screen-ish, no scroll marathon.
+ */
+function WhyCards() {
+  const problems = beats.slice(0, 3);
+  const pivot = beats[3];
+  const resolution = beats[4];
+
+  return (
+    <section
+      aria-label="Why Bricknclick"
+      className="bg-[var(--background)] px-6 py-20 md:hidden"
+    >
+      <p className="mono text-center text-sm text-[var(--muted-foreground)]">
+        [ Why Bricknclick exists ]
+      </p>
+
+      <div className="mx-auto mt-10 max-w-md space-y-3">
+        {problems.map((p, i) => (
+          <Reveal key={i} delay={i * 0.05} y={20}>
+            <div className="flex items-center gap-4 rounded-2xl border border-[var(--border-c)] bg-[var(--card)] px-5 py-5">
+              <span className="mono shrink-0 text-xs text-[var(--muted-foreground)]">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="display text-xl leading-tight text-[var(--foreground)]">
+                {p.text}
+              </p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      <Reveal delay={0.1} y={20}>
+        <p className="mx-auto mt-8 max-w-md text-balance text-center text-lg text-[var(--muted-foreground)]">
+          {pivot.text}
+        </p>
+      </Reveal>
+
+      <Reveal delay={0.15} y={20}>
+        <div className="mx-auto mt-4 flex max-w-md items-center justify-center gap-3 rounded-2xl bg-[var(--color-accent)] px-6 py-10">
+          <p className="display text-6xl leading-none text-black">{resolution.text}</p>
+          <ArrowRight className="h-8 w-8 text-black" aria-hidden strokeWidth={2.5} />
+        </div>
+      </Reveal>
+    </section>
   );
 }

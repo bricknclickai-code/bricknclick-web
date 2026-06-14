@@ -1,9 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
+
+// Ring is rendered at its largest (active) size and scaled DOWN when idle, so
+// size changes ride on `transform` (GPU) instead of width/height (layout+paint).
+const RING_SIZE = 88;
+const IDLE_SCALE = 36 / RING_SIZE;
 
 export function Cursor() {
+  const reduce = useReducedMotion();
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   const ringX = useSpring(x, { stiffness: 220, damping: 28, mass: 0.4 });
@@ -14,6 +20,9 @@ export function Cursor() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // A custom cursor is pure decoration — under reduced motion, leave the
+    // native cursor alone and render nothing.
+    if (reduce) return;
     const isCoarse = window.matchMedia("(pointer: coarse)").matches;
     if (isCoarse) return;
     document.documentElement.classList.add("has-cursor");
@@ -41,7 +50,9 @@ export function Cursor() {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerover", onOver);
     };
-  }, [x, y]);
+  }, [x, y, reduce]);
+
+  if (reduce) return null;
 
   return (
     <>
@@ -57,9 +68,9 @@ export function Cursor() {
           // interpolatable — Motion needs two parsable color strings of the
           // same kind to animate between them.
           initial={false}
+          style={{ width: RING_SIZE, height: RING_SIZE }}
           animate={{
-            width: active ? 88 : 36,
-            height: active ? 88 : 36,
+            scale: active ? 1 : IDLE_SCALE,
             backgroundColor: active ? "rgba(255, 107, 26, 1)" : "rgba(255, 107, 26, 0)",
             borderColor: active ? "rgba(255, 107, 26, 1)" : "rgba(250, 250, 250, 1)",
           }}

@@ -16,6 +16,11 @@
   --animate-marquee: marquee 40s linear infinite;
   --animate-marquee-slow: marquee 80s linear infinite;
   --animate-blink: blink 1.4s ease-in-out infinite;
+
+  /* Shared easing curves — stronger than the built-in CSS defaults.
+     --ease-out for entrances/reveals, --ease-in-out for on-screen movement. */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 @theme inline {
@@ -114,7 +119,8 @@
 
   .reveal-mask {
     clip-path: inset(0 0 100% 0);
-    transition: clip-path 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+    /* Entrance → strong ease-out so it feels responsive from the first frame. */
+    transition: clip-path 0.9s var(--ease-out);
   }
   .reveal-mask.is-in {
     clip-path: inset(0 0 0% 0);
@@ -125,7 +131,7 @@
     background-size: 0% 1px;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    transition: background-size 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: background-size 0.28s var(--ease-out);
   }
   .underline-grow:hover {
     background-size: 100% 1px;

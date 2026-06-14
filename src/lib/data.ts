@@ -111,7 +111,7 @@ export const services: Service[] = [
       "Brand kit + asset library",
       "Performance reports",
     ],
-    metric: { value: "₹65L+", label: "client commissions in 12 months" },
+    metric: { value: "100+", label: "organic leads · zero ad spend" },
     faqs: [
       {
         q: "Do you handle brand identity from scratch?",
@@ -218,7 +218,7 @@ export const projects: Project[] = [
   },
   {
     slug: "perfect-neighbourhood",
-    title: "₹5L in. ₹65L+ out.",
+    title: "50+ EOIs from one Meta campaign.",
     client: "Perfect Neighbourhood",
     tagline: "Platform · Search Surround · Performance Ads · Content",
     year: "2024–26",
@@ -227,14 +227,14 @@ export const projects: Project[] = [
     accent: "#FF6B1A",
     status: "ongoing",
     metrics: [
-      { value: "₹65L+", label: "Commissions in 12 months" },
+      { value: "50+", label: "EOIs via Meta ads · 1 project" },
       { value: "24+", label: "Bookings closed" },
       { value: "~17×", label: "Blended ROAS" },
     ],
     summary:
       "We rebuilt a real-estate platform from WordPress to a full-stack Next.js product, then ran the ad funnel and SEO network that paid for it many times over. Two Grade A builder projects. 24+ bookings. A platform that now ranks itself.",
     results: [
-      "₹4L blended ad spend → ₹65–70L in commissions on Bhartiya City Nikoo 7 (15–18 bookings)",
+      "₹4L blended Meta+Google spend on Bhartiya City Nikoo 7 → 50+ EOIs and 15–18 bookings (~17× blended ROAS)",
       "₹1L Meta-only spend on Puravankara Northern Lights → 8–9 bookings",
       "₹1.38L Google-only spend on Nikoo 7 → 80 qualified leads, 5 bookings",
       "Platform ranks #2–#4 organically for Grade A builder projects (Lodha, Godrej, Bhartiya City, and more)",

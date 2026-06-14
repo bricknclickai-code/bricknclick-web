@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Reveal, SplitReveal } from "@/components/reveal";
 import { BigCta } from "@/components/home/big-cta";
+import { eoiLabel } from "@/lib/eoi";
 
 const team = [
   {
@@ -51,7 +52,7 @@ const values = [
 ];
 
 const numbers = [
-  { v: "₹65L+", l: "Client commissions · 12 mo" },
+  { v: "50+", l: "EOIs via Meta ads · 1 project" },
   { v: "80", l: "Acres sold for clients · single project" },
   { v: "5,200+", l: "Leads sourced via paid funnels" },
   { v: "~17×", l: "Best blended ROAS to date" },
@@ -114,7 +115,7 @@ export default function AboutPage() {
           {numbers.map((n) => (
             <div key={n.l} className="border-l border-[var(--border-c)] pl-6 first:border-l-0 first:pl-0 md:border-l md:pl-6 md:first:border-l-0">
               <p className="display text-6xl text-[var(--color-accent)] md:text-7xl">{n.v}</p>
-              <p className="mono mt-2 text-[var(--muted-foreground)]">{n.l}</p>
+              <p className="mono mt-2 text-[var(--muted-foreground)]">{eoiLabel(n.l)}</p>
             </div>
           ))}
         </div>

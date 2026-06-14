@@ -5,12 +5,13 @@ import Link from "next/link";
 import { useRef } from "react";
 import { Magnetic } from "../magnetic";
 import { SplitReveal } from "../reveal";
+import { eoiLabel } from "@/lib/eoi";
 
 const heroMetrics = [
-  { value: "₹65L+", label: "Client commissions" },
+  { value: "50+", label: "EOIs via Meta ads · 1 project" },
   { value: "80", label: "Acres sold · single project" },
   { value: "3K+", label: "Leads sourced via paid funnels" },
-  { value: "50+", label: "Leads from one organic reel" },
+  { value: "100+", label: "Organic leads · zero ad spend" },
 ];
 
 export function Hero() {
@@ -54,7 +55,7 @@ export function Hero() {
               <p className="display text-3xl leading-none text-[var(--color-accent)] 2xl:text-4xl">
                 {m.value}
               </p>
-              <p className="mono mt-2 text-[var(--muted-foreground)]">{m.label}</p>
+              <p className="mono mt-2 text-[var(--muted-foreground)]">{eoiLabel(m.label)}</p>
             </motion.li>
           ))}
         </ul>
@@ -156,7 +157,7 @@ export function Hero() {
                   {m.value}
                 </p>
                 <p className="mono mt-1.5 text-[10px] leading-snug text-[var(--muted-foreground)]">
-                  {m.label}
+                  {eoiLabel(m.label)}
                 </p>
               </motion.li>
             ))}

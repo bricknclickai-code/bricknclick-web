@@ -72,7 +72,7 @@ export function GET() {
     "- **Exora Farms (Palsamudram, AP)** — 80 acres sold out in 8 months. 3,000+ qualified leads via Meta ads on ₹3L total spend (~₹100 cost per lead on a ₹33L+ ticket). 50+ leads from a single organic reel. Full Next.js platform build + CRM."
   );
   lines.push(
-    "- **Perfect Neighbourhood (perfectneighbourhood.com)** — ₹65–70L in commissions on ₹4L blended Meta+Google spend (~17× ROAS). 24+ bookings across two Grade A builder projects (Bhartiya City Nikoo 7, Puravankara Northern Lights). Platform now ranks #2–#4 organically for Grade A builder names."
+    "- **Perfect Neighbourhood (perfectneighbourhood.com)** — 50+ EOIs from one Meta campaign and 24+ bookings across two Grade A builder projects (Bhartiya City Nikoo 7, Puravankara Northern Lights) on ₹4L blended Meta+Google spend (~17× ROAS). Platform now ranks #2–#4 organically for Grade A builder names."
   );
   lines.push(
     "- **Search Surround method (signature)** — EMD (exact-match-domain) landing-page network capturing builder-project search intent: bhartiyacitykiadb.com, sattvahamletcity.com, sobhaoneworld.com, godrejaveline.com."

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import { useRef, type ReactNode } from "react";
 
 type Props = {
@@ -12,12 +12,16 @@ type Props = {
 
 export function Magnetic({ children, strength = 0.35, radius = 140, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 200, damping: 18, mass: 0.5 });
   const sy = useSpring(y, { stiffness: 200, damping: 18, mass: 0.5 });
 
   const onMove = (e: React.PointerEvent) => {
+    // Mouse only — on touch, pointermove fires during scroll and causes
+    // phantom magnetic drift. Also stand down under reduced motion.
+    if (reduce || e.pointerType !== "mouse") return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();

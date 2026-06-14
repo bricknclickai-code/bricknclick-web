@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { projects, type Project } from "@/lib/data";
+import { eoiLabel } from "@/lib/eoi";
 import { Reveal, SplitReveal } from "../reveal";
 
 export function SelectedWork() {
@@ -141,7 +142,7 @@ function MobileChapterCard({ project, index }: { project: Project; index: number
           {project.metrics[0].value}
         </p>
         <p className="mono mt-2 text-[var(--muted-foreground)]">
-          {project.metrics[0].label}
+          {eoiLabel(project.metrics[0].label)}
         </p>
       </motion.div>
 
@@ -162,7 +163,7 @@ function MobileChapterCard({ project, index }: { project: Project; index: number
             <div key={m.label}>
               <p className="display text-3xl tracking-[-0.03em]">{m.value}</p>
               <p className="mono mt-1 text-[10px] text-[var(--muted-foreground)]">
-                {m.label}
+                {eoiLabel(m.label)}
               </p>
             </div>
           ))}
@@ -263,7 +264,7 @@ function DesktopProjectCard({ project, index }: { project: Project; index: numbe
               {project.metrics[0].value}
             </span>{" "}
             <span className="text-white/80">
-              {project.metrics[0].label.toLowerCase()}
+              {eoiLabel(project.metrics[0].label, "lower")}
             </span>
           </p>
         </div>

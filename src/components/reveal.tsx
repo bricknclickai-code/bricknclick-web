@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { useRef, type ReactNode } from "react";
 
 type Props = {
@@ -14,12 +14,16 @@ type Props = {
 export function Reveal({ children, delay = 0, className, once = true, y = 40 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once, margin: "0px 0px -10% 0px" });
+  const reduce = useReducedMotion();
+  // Reduced motion = gentler, not gone: keep the fade, drop the travel + blur.
+  const hidden = reduce ? { opacity: 0 } : { opacity: 0, y, filter: "blur(8px)" };
+  const shown = reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" };
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y, filter: "blur(8px)" }}
-      animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
+      initial={hidden}
+      animate={inView ? shown : {}}
+      transition={{ duration: reduce ? 0.3 : 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -40,7 +44,24 @@ export function SplitReveal({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
+  const reduce = useReducedMotion();
   const words = text.split(" ");
+
+  // Reduced motion: fade the whole line in once, no per-word slide-up.
+  if (reduce) {
+    return (
+      <motion.div
+        ref={ref}
+        className={className}
+        aria-label={text}
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.3, delay }}
+      >
+        {text}
+      </motion.div>
+    );
+  }
 
   return (
     <div ref={ref} className={className} aria-label={text}>

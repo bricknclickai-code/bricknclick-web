@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { projects, type Project } from "@/lib/data";
+import { eoiLabel } from "@/lib/eoi";
 import { Reveal, SplitReveal } from "@/components/reveal";
 import { BigCta } from "@/components/home/big-cta";
 import { Magnetic } from "@/components/magnetic";
@@ -10,7 +11,7 @@ import { LiveCampaigns } from "@/components/work/live-campaigns";
 export const metadata: Metadata = {
   title: "Work — Selected case studies",
   description:
-    "Selected case studies from Bricknclick. Real numbers, real outcomes — Exora Farms (sold out 80 acres on ₹3L) and Perfect Neighbourhood (₹65L+ commissions on ₹6L).",
+    "Selected case studies from Bricknclick. Real numbers, real outcomes — Exora Farms (sold out 80 acres on ₹3L) and Perfect Neighbourhood (50+ EOIs from one Meta campaign, 24+ bookings).",
   alternates: { canonical: "/work" },
 };
 
@@ -147,7 +148,7 @@ function FeaturedCaseRow({ project, index }: { project: Project; index: number }
                   {m.value}
                 </p>
                 <p className="mono mt-2 text-[10px] text-[var(--muted-foreground)]">
-                  {m.label}
+                  {eoiLabel(m.label)}
                 </p>
               </div>
             ))}

@@ -116,7 +116,7 @@ export function ScrollProgress() {
               >
                 <span
                   aria-hidden
-                  className={`block h-1.5 w-1.5 rounded-full transition-all duration-300 ${
+                  className={`block h-1.5 w-1.5 rounded-full transition-[transform,background-color,box-shadow] duration-300 ${
                     isActive
                       ? "scale-[2.2] bg-[var(--color-accent)] shadow-[0_0_0_4px_rgba(255,107,26,0.12)]"
                       : isPast
@@ -127,7 +127,7 @@ export function ScrollProgress() {
 
                 {/* Label appears on hover/active */}
                 <span
-                  className={`mono pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap text-[10px] tracking-[0.12em] transition-all duration-300 ${
+                  className={`mono pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap text-[10px] tracking-[0.12em] transition-[opacity,color] duration-300 ${
                     isActive
                       ? "opacity-100"
                       : "opacity-0 group-hover:opacity-100"

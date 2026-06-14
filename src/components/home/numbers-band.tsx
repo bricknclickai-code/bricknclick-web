@@ -1,10 +1,11 @@
 import { Reveal, SplitReveal } from "../reveal";
+import { eoiLabel } from "@/lib/eoi";
 
 const stats = [
   { v: "3,000+", l: "Qualified leads sourced via paid funnels" },
   { v: "80", l: "Acres sold for clients · single project" },
-  { v: "₹65L+", l: "Commissions on ₹6L blended ad spend" },
-  { v: "50+", l: "Leads from a single organic reel" },
+  { v: "50+", l: "EOIs via Meta ads · 1 project" },
+  { v: "100+", l: "Organic leads · zero ad spend" },
 ];
 
 export function NumbersBand() {
@@ -31,7 +32,7 @@ export function NumbersBand() {
                   <p className="display text-5xl text-[var(--color-accent)] md:text-7xl">
                     {s.v}
                   </p>
-                  <p className="mono mt-3 text-[var(--muted-foreground)]">{s.l}</p>
+                  <p className="mono mt-3 text-[var(--muted-foreground)]">{eoiLabel(s.l)}</p>
                 </li>
               </Reveal>
             ))}
