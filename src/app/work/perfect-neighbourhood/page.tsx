@@ -8,11 +8,12 @@ import { eoiLabel } from "@/lib/eoi";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://bricknclick.com";
 
 export const metadata: Metadata = {
-  title: "Perfect Neighbourhood — 50+ EOIs from one Meta campaign",
+  title: "Perfect Neighbourhood — 50+ Meta EOIs",
   description:
-    "How we rebuilt a real-estate platform from WordPress to Next.js and ran the ad funnel and SEO network that paid for it. 50+ EOIs from one Meta campaign, 24+ bookings, ~17× ROAS, #2–#4 organic ranking for Grade A builder projects.",
+    "How we rebuilt a real-estate platform from WordPress to Next.js and ran the funnel that paid for it — 50+ EOIs from one Meta campaign, 24+ bookings, ~17× ROAS.",
   alternates: { canonical: "/work/perfect-neighbourhood" },
   openGraph: {
+    type: "article",
     title: "Perfect Neighbourhood · Bricknclick",
     description:
       "₹4L → 50+ EOIs and 15–18 bookings on Bhartiya City Nikoo 7. ₹1L → 8–9 bookings on Puravankara Northern Lights. A platform that now ranks itself.",

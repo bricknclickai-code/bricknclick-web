@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bricknclick — SEO / GEO / AEO Audit Report</title>
+<style>
+  :root{
+    --navy:#1B2A4A; --blue:#2563EB; --green:#16A34A; --amber:#D97706; --red:#DC2626;
+    --orange:#EA580C; --rowalt:#F8F9FA; --border:#E2E8F0; --text:#1E293B; --tint:#EFF6FF;
+    --greenTint:#F0FDF4; --muted:#64748B;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:12px;line-height:1.55;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 28px 60px;}
+  h1{font-size:24px;margin:34px 0 6px;color:var(--navy);border-bottom:3px solid var(--navy);padding-bottom:6px;}
+  h2{font-size:17px;margin:26px 0 8px;color:var(--navy);}
+  h3{font-size:13.5px;margin:18px 0 6px;color:var(--blue);text-transform:uppercase;letter-spacing:.04em;}
+  p{margin:8px 0;}
+  .muted{color:var(--muted);}
+  .score-sub{font-size:12px;color:var(--muted);font-weight:400;}
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:11.5px;}
+  th{background:var(--navy);color:#fff;text-align:left;padding:8px 10px;font-weight:600;}
+  td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;}
+  tr:nth-child(even) td{background:var(--rowalt);}
+  .pill{display:inline-block;color:#fff;padding:3px 9px;border-radius:4px;font-weight:700;font-size:10.5px;white-space:nowrap;text-align:center;}
+  .g{background:var(--green);} .a{background:var(--amber);} .r{background:var(--red);} .o{background:var(--orange);} .b{background:var(--blue);}
+  .status-cell{text-align:center;width:120px;}
+  .box{background:var(--tint);border:1px solid #DBEAFE;border-radius:8px;padding:16px 18px;margin:12px 0;}
+  .goodbox{background:var(--greenTint);border:1px solid #BBF7D0;}
+  /* Cover */
+  .cover{background:var(--navy);color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 28px;}
+  .cover .domain{font-size:42px;font-weight:800;letter-spacing:-.02em;margin:0;}
+  .cover .sub{color:#93C5FD;font-size:18px;margin:12px 0 4px;}
+  .cover .type{font-size:11px;letter-spacing:.22em;margin:6px 0 34px;color:#CBD5E1;}
+  .scorestrip{display:flex;gap:14px;width:100%;max-width:560px;}
+  .scorestrip .cell{flex:1;border-radius:8px;padding:18px 8px;color:#fff;}
+  .scorestrip .dim{font-size:11px;font-weight:700;letter-spacing:.08em;opacity:.95;}
+  .scorestrip .num{font-size:38px;font-weight:800;line-height:1.1;margin:6px 0 2px;}
+  .scorestrip .st{font-size:10px;font-style:italic;opacity:.95;}
+  .cover .foot{margin-top:44px;color:#94A3B8;font-size:10px;line-height:1.7;}
+  .banner{display:flex;justify-content:space-between;font-size:9.5px;color:var(--muted);border-bottom:2px solid var(--navy);padding:14px 0 8px;margin-bottom:6px;}
+  .legend{font-size:10.5px;color:var(--muted);margin:2px 0 14px;}
+  ul.tight{margin:6px 0;padding-left:20px;} ul.tight li{margin:3px 0;}
+  code{background:#F1F5F9;padding:1px 5px;border-radius:3px;font-size:11px;}
+  @media print{
+    @page{margin:1in;}
+    body{font-size:11px;}
+    .cover{min-height:auto;height:9.5in;page-break-after:always;}
+    table,.box{page-break-inside:avoid;}
+    h1{page-break-after:avoid;}
+    .wrap{padding:0;max-width:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <p class="domain">www.bricknclick.ai</p>
+  <p class="sub">SEO / GEO / AEO Audit Report</p>
+  <p class="type">FULL AUDIT · 13 PAGES</p>
+  <div class="scorestrip">
+    <div class="cell" style="background:var(--green)"><div class="dim">SEO</div><div class="num">9</div><div class="st">Strong</div></div>
+    <div class="cell" style="background:var(--green)"><div class="dim">GEO</div><div class="num">8</div><div class="st">Strong</div></div>
+    <div class="cell" style="background:var(--amber)"><div class="dim">AEO</div><div class="num">7</div><div class="st">On Track</div></div>
+  </div>
+  <div class="foot">
+    Audit date: 6 July 2026<br>
+    Claude Skill by Alex Labat (adapted for Claude Code)
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="banner"><span>www.bricknclick.ai</span><span>SEO / GEO / AEO Audit Report</span></div>
+
+  <!-- ============ EXECUTIVE SUMMARY ============ -->
+  <h1>Executive Summary</h1>
+  <div class="box">
+    Bricknclick is in the top tier of technical search readiness for a site its size. The foundations are
+    genuinely strong: valid, layered schema on every page (Organization, BlogPosting, FAQPage, BreadcrumbList,
+    Service), a complete <code>sameAs</code> entity graph, a real hand-authored <code>llms.txt</code> (a signal
+    fewer than 1% of sites ship), prerendered crawlable HTML, HSTS, and 100% image-alt coverage. The most urgent
+    fix is <strong>anonymous authorship</strong> — bylines read "by IIM alumni" and the <code>author</code>/<code>founder</code>
+    schema names no human, which caps E-E-A-T for both Google and AI engines. The biggest untapped opportunity is
+    <strong>AEO schema</strong>: FAQPage markup lives only on <code>/services</code>, while your step-by-step blog
+    posts are ideal candidates for FAQPage + HowTo markup to win featured snippets and AI citations.
+  </div>
+
+  <table>
+    <tr><th>Dimension</th><th>Score</th><th>Status</th><th>Key takeaway</th></tr>
+    <tr><td>SEO</td><td><span class="pill g">9/10</span></td><td>Strong</td><td>Clean, complete on-page hygiene; only title/meta length and a couple of OG gaps to trim.</td></tr>
+    <tr><td>GEO</td><td><span class="pill g">8/10</span></td><td>Strong</td><td>Excellent entity graph + llms.txt; held back by anonymous authorship / no human E-E-A-T.</td></tr>
+    <tr><td>AEO</td><td><span class="pill a">7/10</span></td><td>On Track</td><td>Great Q-headings + FAQ on services; expand FAQ/HowTo schema across blog to capture snippets.</td></tr>
+    <tr><td><strong>Combined</strong></td><td colspan="3"><strong>24 / 30</strong></td></tr>
+  </table>
+
+  <!-- ============ PAGES AUDITED ============ -->
+  <h1>Pages Audited</h1>
+  <table>
+    <tr><th>URL</th><th>Type</th><th>Notes</th></tr>
+    <tr><td>/</td><td>Homepage</td><td>Title 41c · desc 133c · Organization + ContactPoint schema · 1 H1 · 1,055 words · 10 imgs all alt'd</td></tr>
+    <tr><td>/services</td><td>Services</td><td>4× <b>FAQPage</b> + Service schema · 1,239 words · rich AEO signals</td></tr>
+    <tr><td>/work</td><td>Work index</td><td>Gallery · 486 words (thin, expected) · desc 183c (truncates)</td></tr>
+    <tr><td>/about</td><td>About</td><td>381 words (deepen for E-E-A-T) · founder unnamed</td></tr>
+    <tr><td>/blog</td><td>Blog index</td><td>Journal listing · 446 words</td></tr>
+    <tr><td>/contact</td><td>Contact</td><td>NAP (phone/email/WhatsApp) · 192 words (expected) · no H2/H3</td></tr>
+    <tr><td>/work/exora-farms</td><td>Case study</td><td>CreativeWork + BreadcrumbList · 766 words · desc 209c · og:type missing</td></tr>
+    <tr><td>/work/perfect-neighbourhood</td><td>Case study</td><td>CreativeWork + BreadcrumbList · 757 words · title 69c, desc 229c · og:type missing</td></tr>
+    <tr><td>/blog/real-estate-blog-topics-that-convert</td><td>Blog post</td><td>BlogPosting + Breadcrumb · <b>2,354 words</b> · title 103c (truncates)</td></tr>
+    <tr><td>/blog/ai-chatbots-real-estate-lead-qualification</td><td>Blog post</td><td>1,956 words · title 104c · author = Organization (not human)</td></tr>
+    <tr><td>/blog/ai-tools-real-estate-ad-campaigns</td><td>Blog post</td><td>1,988 words · title 106c · step-based (HowTo candidate)</td></tr>
+    <tr><td>/blog/aeo-vs-geo-vs-seo-india-2026</td><td>Blog post</td><td>1,749 words · title 114c · comparison content (table snippet candidate)</td></tr>
+    <tr><td>/blog/ai-real-estate-marketing-india-2026</td><td>Blog post</td><td>1,720 words · title 109c</td></tr>
+  </table>
+  <p class="muted">Also checked: <code>robots.txt</code> (Allow: / + sitemap pointer), <code>sitemap.xml</code> (13 URLs, lastmod + priority), and <code>llms.txt</code> (present, 7.4 KB, well-structured). A missing route correctly returns HTTP 404.</p>
+
+  <!-- ============ SEO ============ -->
+  <h1>SEO Analysis <span class="score-sub">— 9/10 (Strong)</span></h1>
+  <p class="legend">Status key: <span class="pill g">Good</span> &nbsp; <span class="pill a">Needs Attention</span> &nbsp; <span class="pill r">Missing</span></p>
+
+  <h3>Technical On-Page</h3>
+  <table>
+    <tr><th>Signal</th><th>Finding</th><th class="status-cell">Status</th></tr>
+    <tr><td>Title tags</td><td>All 13 unique, keyword-led, branded "· Bricknclick". But 5 blog titles are 103–114 chars and 2 case studies 54–69 chars — Google truncates near 60, so SERP titles get cut.</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+    <tr><td>Meta descriptions</td><td>Present on every page and well-written. Several exceed the ~160c display limit: /work 183, Exora 209, PN 229, blog posts 236–281 — tails get truncated.</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+    <tr><td>Heading hierarchy</td><td>Exactly one H1 per page; logical, keyword-relevant H2/H3 (e.g. blog posts run 8–12 H2s). No stuffing.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>URL structure</td><td>Clean, readable, keyword-bearing (<code>/work/exora-farms</code>, <code>/blog/aeo-vs-geo-vs-seo-india-2026</code>). No params or stop-word noise.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Canonical</td><td>Self-referencing canonical present on all 13 pages.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Robots / indexability</td><td><code>index, follow</code> on every page; robots.txt allows all; no accidental noindex.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Viewport / mobile</td><td>Viewport meta present sitewide.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Image alt text</td><td>0 of ~44 images missing alt across all pages — full coverage.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Open Graph / Twitter</td><td>og:title/description/image + <code>twitter:card=summary_large_image</code> everywhere; branded dynamic OG image. Gap: <code>og:type</code> absent on the two case-study pages (should be <code>article</code>).</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+  </table>
+
+  <h3>Content Quality</h3>
+  <table>
+    <tr><th>Signal</th><th>Finding</th><th class="status-cell">Status</th></tr>
+    <tr><td>Word count / depth</td><td>Blog posts are pillar-grade (1,720–2,354 words); services 1,239; home 1,055. Thinner: /about 381 and /work index 486 (About is worth deepening for authority).</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Keyword / topical focus</td><td>Tight, consistent theme: Indian real-estate performance marketing + AI search. Strong semantic coverage.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Freshness signals</td><td>BlogPosting <code>datePublished</code>/<code>dateModified</code> set; sitemap <code>lastmod</code> present.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Readability</td><td>Scannable — subheadings, short paragraphs, numbered/bulleted lists throughout.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+  </table>
+
+  <h3>Structured Data</h3>
+  <table>
+    <tr><th>Signal</th><th>Finding</th><th class="status-cell">Status</th></tr>
+    <tr><td>Schema coverage</td><td>Layered and sitewide: Organization + ContactPoint everywhere; Service + FAQPage on /services; CreativeWork + BreadcrumbList on case studies; BlogPosting + ImageObject + BreadcrumbList on posts.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Schema validity</td><td>All JSON-LD parsed cleanly — no syntax errors detected across the crawl.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+  </table>
+
+  <!-- ============ GEO ============ -->
+  <h1>GEO Analysis <span class="score-sub">— 8/10 (Strong)</span></h1>
+  <p class="muted">GEO = Generative Engine Optimization: being clear, authoritative, and fact-rich enough that AI answer engines (ChatGPT Search, Perplexity, Google AI Overviews, Gemini) cite <em>you</em> inside their synthesized answers.</p>
+
+  <h3>E-E-A-T Assessment</h3>
+  <table>
+    <tr><th>Signal</th><th>Finding</th><th class="status-cell">Status</th></tr>
+    <tr><td>Author information</td><td>Bylines read "by IIM alumni"; BlogPosting <code>author</code> is an <b>Organization</b>, not a named person. No individual expertise/credential entity to attach authority to.</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+    <tr><td>About page</td><td>Exists and positions the team well ("senior team, runs like an in-house unit"), but is 381 words and the founder is anonymous ("IIM alumnus") — no names, photos, or bios.</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+    <tr><td>Contact info</td><td>Phone, email, and WhatsApp visible + ContactPoint schema (sales & support, areaServed IN/Worldwide, EN/Hindi).</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Trust signals</td><td>Named client roster (ThinkPropRealty, Perfect Neighbourhood, Exora Farms, HomePlusRealty, RealDoor) + builder projects (Lodha, TVS Emerald, Puravankara, Assetz) + quantified case studies. Missing: named testimonials / press.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Organization schema</td><td>Complete brand entity: name, url, logo, slogan, description, <code>knowsAbout</code>, and <code>sameAs</code> (LinkedIn, Instagram, X).</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+  </table>
+
+  <h3>Content for AI Synthesis</h3>
+  <table>
+    <tr><th>Signal</th><th>Finding</th><th class="status-cell">Status</th></tr>
+    <tr><td>Factual density</td><td>Excellent — concrete, citable data points (₹3L spend → 80 acres sold, 50+ EOIs from one campaign, ~17× ROAS, 3K+ leads). This is exactly what AI engines quote.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Clear claims</td><td>Value proposition stated plainly up top ("We own it — from strategy to ship").</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Entity clarity</td><td>Consistent "Bricknclick" naming + sameAs + llms.txt make the brand entity unambiguous to AI crawlers.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>External source citation</td><td>Posts lean on first-party experience; few links to external authoritative sources. Adding 1–2 credible citations per post strengthens synthesizability.</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+    <tr><td>Originality / POV</td><td>Strong, opinionated, receipts-driven perspective — high-value for citation.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+  </table>
+
+  <h3>Technical GEO</h3>
+  <table>
+    <tr><th>Signal</th><th>Finding</th><th class="status-cell">Status</th></tr>
+    <tr><td>llms.txt</td><td><b>Present and genuinely useful</b> (7.4 KB): summary, services with anchor links, client list, contact. A rare, advanced GEO signal.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Crawlability</td><td>Prerendered HTML (<code>x-nextjs-prerender</code>), full content in source — AI crawlers see everything, not a JS shell.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>HTTPS / security</td><td>HTTPS with HSTS (<code>max-age=63072000</code>).</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Entity links (sameAs)</td><td>LinkedIn, Instagram, and X linked from Organization schema — solid entity graph.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Advanced schema types</td><td>Missing higher-order types that boost AI trust: <code>Person</code> (named author), <code>SpeakableSpecification</code>, and <code>HowTo</code> where applicable.</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+  </table>
+
+  <!-- ============ AEO ============ -->
+  <h1>AEO Analysis <span class="score-sub">— 7/10 (On Track)</span></h1>
+  <p class="muted">AEO = Answer Engine Optimization: structuring content so search engines and assistants can extract a direct answer (featured snippets, People Also Ask, voice).</p>
+
+  <h3>Featured Snippet Eligibility</h3>
+  <table>
+    <tr><th>Signal</th><th>Finding</th><th class="status-cell">Status</th></tr>
+    <tr><td>Direct-answer paragraphs</td><td>Content is thorough but answers aren't always distilled into a 40–60 word block directly under the question heading — the format snippets reward. Tightening the first paragraph after each Q-heading would help.</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+    <tr><td>Definition patterns</td><td>Clear "X is…" framing present (e.g. "SEO ranks. AEO answers. GEO gets cited.").</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>List content</td><td>Numbered steps and bulleted lists throughout — strong list-snippet candidates.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Table content</td><td>Comparison posts (AEO vs GEO vs SEO) lend themselves to table snippets; ensure they use real <code>&lt;table&gt;</code> markup.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+  </table>
+
+  <h3>Structured Answer Formats</h3>
+  <table>
+    <tr><th>Signal</th><th>Finding</th><th class="status-cell">Status</th></tr>
+    <tr><td>FAQ schema</td><td>Deployed well on <code>/services</code> (4 services × FAQPage). But absent from blog posts and there's no dedicated FAQ page — the biggest AEO gap.</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+    <tr><td>HowTo schema</td><td>None found. Step-based posts ("5-step framework", "7-tool stack") are ideal HowTo / ItemList candidates.</td><td class="status-cell"><span class="pill r">Missing</span></td></tr>
+    <tr><td>Question-phrased headings</td><td>Used consistently across the blog ("How to…", "Which one actually pays…").</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Speakable schema</td><td>No <code>SpeakableSpecification</code> markup for voice-friendly sections.</td><td class="status-cell"><span class="pill r">Missing</span></td></tr>
+  </table>
+
+  <h3>Voice Search Readiness</h3>
+  <table>
+    <tr><th>Signal</th><th>Finding</th><th class="status-cell">Status</th></tr>
+    <tr><td>Conversational language</td><td>Natural, direct phrasing throughout — voice-friendly tone.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Long-tail coverage</td><td>Strong who/what/how coverage of specific buyer questions.</td><td class="status-cell"><span class="pill g">Good</span></td></tr>
+    <tr><td>Local signals</td><td>Phone + email + areaServed present, but no <code>PostalAddress</code>/<code>LocalBusiness</code> schema or office location. Add if you want Bangalore/local visibility.</td><td class="status-cell"><span class="pill a">Needs Attention</span></td></tr>
+  </table>
+
+  <!-- ============ PRIORITY MATRIX ============ -->
+  <h1>Priority Recommendations</h1>
+  <table>
+    <tr><th>Priority</th><th>Issue / Action</th><th>Dimension</th><th>Effort</th><th>Impact</th></tr>
+    <tr><td><span class="pill o">High</span></td><td>Shorten blog <code>&lt;title&gt;</code> tags to ≤60 chars (keep the long headline as the on-page H1). All 5 posts currently truncate in SERPs.</td><td>SEO</td><td>Low</td><td>High</td></tr>
+    <tr><td><span class="pill o">High</span></td><td>Add named human authors: real bylines + <code>Person</code> author schema with <code>sameAs</code> LinkedIn, and name the founder in Organization <code>founder</code>. Your #1 E-E-A-T / GEO lever.</td><td>GEO</td><td>Medium</td><td>High</td></tr>
+    <tr><td><span class="pill a">Medium</span></td><td>Add FAQPage schema to blog posts (Q-headings already exist) and/or a dedicated <code>/faq</code> page.</td><td>AEO</td><td>Medium</td><td>High</td></tr>
+    <tr><td><span class="pill a">Medium</span></td><td>Add HowTo / ItemList schema to the step-based posts ("5-step", "7-tool").</td><td>AEO</td><td>Low</td><td>Medium</td></tr>
+    <tr><td><span class="pill a">Medium</span></td><td>Trim meta descriptions to ≤160 chars on /work, both case studies, and all blog posts.</td><td>SEO</td><td>Low</td><td>Medium</td></tr>
+    <tr><td><span class="pill a">Medium</span></td><td>Distill a 40–60 word direct answer under each question heading for snippet capture.</td><td>AEO</td><td>Medium</td><td>Medium</td></tr>
+    <tr><td><span class="pill g">Quick Win</span></td><td>Set <code>og:type=article</code> on the two case-study pages.</td><td>SEO</td><td>Low</td><td>Low</td></tr>
+    <tr><td><span class="pill g">Quick Win</span></td><td>Add <code>LocalBusiness</code> + <code>PostalAddress</code> schema if targeting local (Bangalore) search.</td><td>GEO</td><td>Low</td><td>Medium*</td></tr>
+    <tr><td><span class="pill g">Quick Win</span></td><td>Deepen the About page and add 2–3 named client testimonials.</td><td>GEO</td><td>Medium</td><td>Medium</td></tr>
+  </table>
+  <p class="muted">*Impact is high only if local/geographic search matters to your funnel.</p>
+
+  <!-- ============ WHAT'S WORKING ============ -->
+  <h1>What's Working Well</h1>
+  <table>
+    <tr><th>Strength</th><th>Evidence from the crawl</th></tr>
+    <tr style="background:var(--greenTint)"><td>Advanced GEO readiness</td><td>A genuine hand-written <code>llms.txt</code> (7.4 KB) — services with anchor links, client list, contact. Rarer than 99% of sites.</td></tr>
+    <tr><td>Rich, valid schema graph</td><td>Organization, BlogPosting, FAQPage, Service, BreadcrumbList, ContactPoint, ImageObject — layered on the right pages and parsing cleanly.</td></tr>
+    <tr style="background:var(--greenTint)"><td>Strong entity signals</td><td><code>sameAs</code> (LinkedIn/Instagram/X) + <code>knowsAbout</code> + consistent brand naming make the entity unambiguous to AI.</td></tr>
+    <tr><td>Clean technical hygiene</td><td>Prerendered + fast (Vercel), HSTS, correct robots.txt + sitemap.xml, real 404s, self-referencing canonicals everywhere.</td></tr>
+    <tr style="background:var(--greenTint)"><td>On-page fundamentals</td><td>Exactly one H1 per page, logical heading trees, and 100% image-alt coverage (0 missing across ~44 images).</td></tr>
+    <tr><td>Citable, original content</td><td>High factual density with real numbers and a clear POV across 1,700–2,350-word posts — precisely what AI answer engines cite.</td></tr>
+  </table>
+
+  <!-- ============ HONEST LIMITS ============ -->
+  <h1>What This Audit Could Not Measure</h1>
+  <p>This audit is based on server-rendered HTML. The following need dedicated tools:</p>
+  <ul class="tight">
+    <li><strong>Core Web Vitals / real page speed</strong> — run <code>pagespeed.web.dev</code> (Google PageSpeed Insights) per template.</li>
+    <li><strong>Mobile rendering &amp; interaction</strong> — verify in a real device / Lighthouse mobile.</li>
+    <li><strong>Backlink profile &amp; domain authority</strong> — Ahrefs / Semrush.</li>
+    <li><strong>Actual AI-citation share</strong> — track brand mentions inside Perplexity / ChatGPT Search / AI Overviews over time.</li>
+  </ul>
+
+  <!-- ============ GLOSSARY ============ -->
+  <h1>Glossary</h1>
+  <table>
+    <tr><th>Term</th><th>Plain-English definition</th></tr>
+    <tr><td><strong>SEO</strong></td><td>Search Engine Optimization — getting ranked in traditional results (Google, Bing) via titles, meta tags, headings, links, and schema.</td></tr>
+    <tr><td><strong>GEO</strong></td><td>Generative Engine Optimization — being authoritative and fact-rich enough that AI engines (ChatGPT Search, Perplexity, Gemini, AI Overviews) cite you inside their generated answers.</td></tr>
+    <tr><td><strong>AEO</strong></td><td>Answer Engine Optimization — structuring content so engines can lift a direct answer into featured snippets, People Also Ask, and voice results.</td></tr>
+  </table>
+
+  <div class="banner" style="border-bottom:none;border-top:2px solid var(--border);margin-top:24px;"><span>Claude Skill by Alex Labat (adapted for Claude Code)</span><span>Bricknclick · 6 July 2026</span></div>
+</div>
+</body>
+</html>

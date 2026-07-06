@@ -22,22 +22,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
+  const seoTitle = post.seoTitle ?? post.title;
+  const metaDesc = post.metaDescription ?? post.description;
   return {
-    title: post.title,
-    description: post.description,
+    title: seoTitle,
+    description: metaDesc,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
-      title: post.title,
-      description: post.description,
+      title: seoTitle,
+      description: metaDesc,
       publishedTime: post.date,
       authors: [post.author],
       images: post.cover ? [{ url: post.cover, width: 1200, height: 630 }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
-      description: post.description,
+      title: seoTitle,
+      description: metaDesc,
       images: post.cover ? [post.cover] : undefined,
     },
   };
@@ -158,6 +160,21 @@ export default async function BlogPostPage({
     ],
   };
 
+  // FAQPage schema is only emitted when the FAQs are ALSO rendered visibly
+  // below — Google requires the Q&A content to be present on the page.
+  const faqJsonLd =
+    post.faqs && post.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : null;
+
   return (
     <>
       <article>
@@ -177,6 +194,8 @@ export default async function BlogPostPage({
               })}
             </span>
             <span>· {post.readingTime} min read</span>
+            <span>·</span>
+            <span>By {post.author}</span>
           </div>
           <h1 className="display mt-8 text-[clamp(40px,6vw,80px)] text-balance">
             <SplitReveal text={post.title} />
@@ -213,6 +232,24 @@ export default async function BlogPostPage({
           />
         </div>
 
+        {post.faqs && post.faqs.length > 0 ? (
+          <section className="mx-auto max-w-3xl px-6 pb-8">
+            <h2 className="display mb-8 text-3xl tracking-tight md:text-4xl">
+              Frequently asked questions
+            </h2>
+            <dl className="divide-y divide-[var(--border-c)] border-y border-[var(--border-c)]">
+              {post.faqs.map((f) => (
+                <div key={f.q} className="py-6">
+                  <dt className="display text-xl md:text-2xl">{f.q}</dt>
+                  <dd className="mt-3 text-lg leading-relaxed text-[var(--foreground)]/85">
+                    {f.a}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ) : null}
+
         <section className="mx-auto max-w-3xl px-6 pb-20">
           <div className="rounded-2xl border border-[var(--border-c)] bg-[var(--card)] p-8">
             <p className="mono text-[var(--muted-foreground)]">Read next</p>
@@ -240,6 +277,12 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {faqJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      ) : null}
     </>
   );
 }

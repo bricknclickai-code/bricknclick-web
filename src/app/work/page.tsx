@@ -11,7 +11,7 @@ import { LiveCampaigns } from "@/components/work/live-campaigns";
 export const metadata: Metadata = {
   title: "Work — Selected case studies",
   description:
-    "Selected case studies from Bricknclick. Real numbers, real outcomes — Exora Farms (sold out 80 acres on ₹3L) and Perfect Neighbourhood (50+ EOIs from one Meta campaign, 24+ bookings).",
+    "Selected case studies from Bricknclick — Exora Farms sold out 80 acres on ₹3L, and Perfect Neighbourhood drove 50+ EOIs from one Meta campaign.",
   alternates: { canonical: "/work" },
 };
 

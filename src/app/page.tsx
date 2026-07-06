@@ -3,6 +3,7 @@ import { MarqueeBand } from "@/components/home/marquee-band";
 import { ProblemSolution } from "@/components/home/problem-solution";
 import { ServicesIndex } from "@/components/home/services-index";
 import { SelectedWork } from "@/components/home/selected-work";
+import { Reels } from "@/components/home/reels";
 import { Process } from "@/components/home/process";
 import { ClientsStrip } from "@/components/home/clients-strip";
 import { NumbersBand } from "@/components/home/numbers-band";
@@ -31,6 +32,10 @@ export default function HomePage() {
 
       <div id="work">
         <SelectedWork />
+      </div>
+
+      <div id="reels">
+        <Reels />
       </div>
 
       <div id="process">

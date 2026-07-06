@@ -9,9 +9,10 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://bricknclick.com";
 export const metadata: Metadata = {
   title: "Exora Farms — ₹3L in. 80 acres sold out.",
   description:
-    "How we built the Exora Farms platform, ran the paid funnel, and engineered the content engine that sold out 80 acres of premium farmland in eight months. 3K+ leads on ₹3L ad spend. One reel: 50+ organic leads.",
+    "How we built the Exora Farms platform, ran the paid funnel, and sold out 80 acres of premium farmland — 3K+ leads on ₹3L ad spend.",
   alternates: { canonical: "/work/exora-farms" },
   openGraph: {
+    type: "article",
     title: "Exora Farms · Bricknclick",
     description:
       "₹3L in. 80 acres out. A platform, a paid motion, an organic engine, and a CRM that closed the loop on a ₹33L+ ticket.",

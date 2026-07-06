@@ -32,6 +32,7 @@ export async function generateMetadata({
     description: project.summary,
     alternates: { canonical: `/work/${project.slug}` },
     openGraph: {
+      type: "article",
       title: `${project.client} · Bricknclick`,
       description: project.summary,
       images: [{ url: project.cover, width: 1200, height: 630 }],

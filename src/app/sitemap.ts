@@ -9,6 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     "",
+    "/real-estate-marketing-agency",
+    "/real-estate-marketing-agency-bangalore",
     "/services",
     "/work",
     "/about",
@@ -18,7 +20,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE}${path}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
-    priority: path === "" ? 1 : 0.8,
+    // Money landing pages get top priority alongside the homepage.
+    priority:
+      path === "" || path.startsWith("/real-estate-marketing-agency") ? 1 : 0.8,
   }));
 
   const legalRoutes = ["/privacy", "/terms"].map((path) => ({

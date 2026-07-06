@@ -3,6 +3,15 @@ import { Logo } from "./logo";
 
 const sitemap = [
   {
+    title: "Real estate",
+    links: [
+      { href: "/real-estate-marketing-agency", label: "Real estate marketing agency" },
+      { href: "/real-estate-marketing-agency-bangalore", label: "Agency in Bangalore" },
+      { href: "/work/perfect-neighbourhood", label: "Real estate case study" },
+      { href: "/blog", label: "Real estate insights" },
+    ],
+  },
+  {
     title: "Studio",
     links: [
       { href: "/about", label: "About" },
@@ -36,12 +45,12 @@ export function Footer() {
   return (
     <footer className="relative mt-32 border-t border-[var(--border-c)] bg-[var(--background)]">
       <div className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
             <Logo withTagline size="md" />
             <p className="mt-6 max-w-sm text-sm text-[var(--muted-foreground)]">
-              A digital agency that builds, ships, and scales. Ads, web, and content —
-              under one roof, with one accountable team.
+              A real estate marketing agency that builds, ships, and scales. Performance
+              ads, project websites, and content — under one roof, with one accountable team.
             </p>
             <p className="mono mt-6 text-[var(--muted-foreground)]">
               <span className="mr-2 inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--color-accent)]" />
