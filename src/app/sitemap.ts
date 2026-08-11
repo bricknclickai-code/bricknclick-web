@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/real-estate-marketing-agency",
     "/real-estate-marketing-agency-bangalore",
     "/services",
+    "/company-profile",
     "/work",
     "/about",
     "/blog",
